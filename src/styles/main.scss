@@ -1,0 +1,18 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald:300,500,700|Zilla+Slab:300,300i,500,700');
+
+$red: #db4c48;
+$blue: #318dc1;
+$green: #9dc263;
+$yellow: #eab943;
+
+html {
+  font-size: 16px;
+}
+
+h1, h2, h3 {
+  font-family: 'Oswald', sans-serif;
+}
+
+h4, h5, h6, p {
+  font-family: 'Zilla Slab', serif;
+}
