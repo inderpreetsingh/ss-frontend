@@ -9,6 +9,8 @@ import SEO from '../components/seo';
 import 'normalize.css';
 import '../styles/main.scss';
 
+const themes = ['red', 'green', 'yellow'];
+
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
@@ -36,6 +38,8 @@ class IndexPage extends React.Component {
 
   render() {
     const { counter } = this.state;
+    const currentTheme = counter % 3;
+
     return (
       <Layout>
         <SEO title="Skillshape Landing Page" />
@@ -57,8 +61,8 @@ class IndexPage extends React.Component {
           `}
           render={data => (
             <div className="bg-container">
-              {data.allFile.edges.map(({ node }, index, arr) => (
-                <Fade when={counter % arr.length === index}>
+              {data.allFile.edges.map(({ node }, index) => (
+                <Fade when={currentTheme === index}>
                   <Img
                     fluid={node.childImageSharp.fluid}
                     alt="Background"
@@ -69,24 +73,43 @@ class IndexPage extends React.Component {
           )}
         />
         <div className="main-text">
+          <div className="lines">
+            <span className={`red ${currentTheme === 0 && 'active'}`} />
+            <span className={`green ${currentTheme === 1 && 'active'}`} />
+            <span className={`yellow ${currentTheme === 2 && 'active'}`} />
+          </div>
           <h2>
             A platform for
             <span> institutes  </span>
             that make the world a
           </h2>
           <h1>
-            <span> Strong </span>
+            <span className={themes[currentTheme]}> Stronger </span>
             Place.
           </h1>
           <div className="buttons-wrapper">
-            <button>I ama student </button>
-            <button> Sign up as a school </button>
+            <button className="plain-btn">
+              <h3>I am a student</h3>
+            </button>
+            <button className={`color-btn ${themes[currentTheme]}`}>
+              <h3> Sign up as a school </h3>
+            </button>
           </div>
-          <p>
+          <h4>
             Hurry up!
             <span> It's free </span>
             for a limited time.
-          </p>
+          </h4>
+        </div>
+        <div className="learn-more-block">
+          <button>
+            <h4> Learn More </h4>
+          </button>
+          <div className="arrows">
+            <span />
+            <span />
+            <span />
+          </div>
         </div>
       </Layout>
     );
