@@ -5,11 +5,33 @@ import Img from 'gatsby-image';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import Parallax from '../components/Parallax';
+import { TEXT } from '../locals';
 
 import 'normalize.css';
 import '../styles/main.scss';
 
-const themes = ['red', 'green', 'yellow'];
+const { MAIN } = TEXT;
+
+const themes = {
+  0: {
+    color: 'red',
+    text: MAIN.THEME[0],
+    img: 'bg_1.jpg',
+  },
+  1: {
+    color: 'green',
+    text: MAIN.THEME[1],
+    img: 'bg_2.jpg',
+  },
+  2: {
+    color: 'yellow',
+    text: MAIN.THEME[2],
+    img: 'bg_3.jpg',
+  },
+};
+
+// TODO: Custom cursor.
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -38,7 +60,8 @@ class IndexPage extends React.Component {
 
   render() {
     const { counter } = this.state;
-    const currentTheme = counter % 3;
+    const themeId = counter % 3;
+    const theme = themes[themeId];
 
     return (
       <Layout>
@@ -61,12 +84,17 @@ class IndexPage extends React.Component {
           `}
           render={data => (
             <div className="bg-container">
-              {data.allFile.edges.map(({ node }, index) => (
-                <Fade when={currentTheme === index}>
-                  <Img
-                    fluid={node.childImageSharp.fluid}
-                    alt="Background"
-                  />
+              {data.allFile.edges.map(({ node: { childImageSharp: { fluid } } }) => (
+                <Fade
+                  key={fluid.src}
+                  when={theme.img === fluid.src.slice(-8)}
+                >
+                  <Parallax>
+                    <Img
+                      fluid={fluid}
+                      alt={MAIN.BACKGROUND_ALT}
+                    />
+                  </Parallax>
                 </Fade>
               ))}
             </div>
@@ -74,36 +102,48 @@ class IndexPage extends React.Component {
         />
         <div className="main-text">
           <div className="lines">
-            <span className={`red ${currentTheme === 0 && 'active'}`} />
-            <span className={`green ${currentTheme === 1 && 'active'}`} />
-            <span className={`yellow ${currentTheme === 2 && 'active'}`} />
+            <span className={`red ${themeId === 0 && 'active'}`} />
+            <span className={`green ${themeId === 1 && 'active'}`} />
+            <span className={`yellow ${themeId === 2 && 'active'}`} />
           </div>
-          <h2>
-            A platform for
-            <span> institutes  </span>
-            that make the world a
-          </h2>
-          <h1>
-            <span className={themes[currentTheme]}> Stronger </span>
-            Place.
-          </h1>
-          <div className="buttons-wrapper">
+          <div className="hero-text">
+            <h2>
+              { MAIN.HERO_TEXT[0] }
+              <span>{ MAIN.HERO_TEXT[1] }</span>
+              { MAIN.HERO_TEXT[2] }
+            </h2>
+            <div>
+              {
+                Object.keys(themes).map(i => (
+                  <Fade when={themeId === +i}>
+                    <h1>
+                      <span className={themes[i].color}>
+                        {themes[i].text.make}
+                      </span>
+                    </h1>
+                  </Fade>
+                ))
+              }
+              <h1>{ MAIN.HERO_TEXT[3] }</h1>
+            </div>
+          </div>
+          <div className={`buttons-wrapper ${theme.color}`}>
             <button className="plain-btn">
-              <h3>I am a student</h3>
+              <h3>{ MAIN.BTN_STUDENT }</h3>
             </button>
-            <button className={`color-btn ${themes[currentTheme]}`}>
-              <h3> Sign up as a school </h3>
+            <button className="color-btn">
+              <h3>{ MAIN.BTN_SCHOOL }</h3>
             </button>
           </div>
           <h4>
-            Hurry up!
-            <span> It's free </span>
-            for a limited time.
+            { MAIN.HURRY_UP[0] }
+            <span>{ MAIN.HURRY_UP[1] }</span>
+            { MAIN.HURRY_UP[2] }
           </h4>
         </div>
         <div className="learn-more-block">
           <button>
-            <h4> Learn More </h4>
+            <h4>{ MAIN.BTN_LEARN_MORE }</h4>
           </button>
           <div className="arrows">
             <span />

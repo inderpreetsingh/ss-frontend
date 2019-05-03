@@ -2,12 +2,15 @@ import React from 'react';
 
 import Layout from '../components/layout';
 import SEO from '../components/seo';
+import { TEXT } from '../locals';
+
+const { NOT_FOUND } = TEXT;
 
 const NotFoundPage = () => (
   <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <SEO title={NOT_FOUND.SEO_TITLE} />
+    <h1>{NOT_FOUND.TITLE}</h1>
+    <p>{NOT_FOUND.BODY}</p>
   </Layout>
 );
 

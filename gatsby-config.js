@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: 'Skillshape',
     description: 'Skillshape Landing',
-    author: '@ArkavenkoVladislav',
   },
   plugins: [
     'gatsby-plugin-react-helmet',
@@ -12,6 +11,14 @@ module.exports = {
       options: {
         name: 'images',
         path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-plugin-react-svg',
+      options: {
+        rule: {
+          include: /icons/,
+        },
       },
     },
     'gatsby-transformer-sharp',

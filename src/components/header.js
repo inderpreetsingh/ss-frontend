@@ -1,10 +1,17 @@
 import React from 'react';
+import Logo from '../icons/logo.svg';
+import { TEXT } from '../locals';
+
+const { HEADER } = TEXT;
 
 const Header = () => (
   <div className="header">
-    <div>
-      <h3> Skillshape, </h3>
-      <h5> your path revealed </h5>
+    <div className="logo-block">
+      <Logo />
+      <div>
+        <h3>{ HEADER.LOGO[0] }</h3>
+        <h5>{ HEADER.LOGO[1] }</h5>
+      </div>
     </div>
     <div className="menu">
       <div className="burger">
@@ -12,7 +19,7 @@ const Header = () => (
         <span />
         <span />
       </div>
-      <p> menu </p>
+      <p>{ HEADER.MENU }</p>
     </div>
   </div>
 );
