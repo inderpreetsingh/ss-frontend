@@ -32,6 +32,7 @@ const themes = {
 };
 
 // TODO: Custom cursor.
+// TODO: It would be better to use Redux or Context API for current theme.
 
 class IndexPage extends React.Component {
   constructor(props) {
@@ -142,7 +143,7 @@ class IndexPage extends React.Component {
           </h4>
         </div>
         <div className="learn-more-block">
-          <button>
+          <button className={theme.color}>
             <h4>{ MAIN.BTN_LEARN_MORE }</h4>
           </button>
           <div className="arrows">

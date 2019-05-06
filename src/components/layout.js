@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
 
 import Header from './header';
+import CustomCursor from './CustomCursor';
 
 const Layout = ({ children }) => (
   <StaticQuery
@@ -16,12 +17,12 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
+      <CustomCursor>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div>
           <main>{children}</main>
         </div>
-      </>
+      </CustomCursor>
     )}
   />
 );
