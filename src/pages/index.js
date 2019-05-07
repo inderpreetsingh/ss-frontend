@@ -31,44 +31,53 @@ const themes = {
   },
 };
 
-// TODO: Custom cursor.
-// TODO: It would be better to use Redux or Context API for current theme.
-
 class IndexPage extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      counter: 0,
+      currentTheme: 0,
     };
+
+    this.counter = null;
 
     this.count = this.count.bind(this);
   }
 
   componentDidMount() {
-    setInterval(this.count, 6000);
+    this.counter = setInterval(this.count, 10000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.count);
+    clearInterval(this.counter);
   }
 
   count() {
     this.setState(state => ({
-      counter: state.counter + 1,
+      currentTheme: (state.currentTheme + 1) % 3,
     }));
   }
 
+  changeTheme(currentTheme) {
+    this.setState({
+      currentTheme,
+    });
+
+    // To prevent automatic theme change after user click.
+    clearInterval(this.counter);
+    this.counter = setInterval(this.count, 10000);
+  }
+
   render() {
-    const { counter } = this.state;
-    const themeId = counter % 3;
-    const theme = themes[themeId];
+    const { currentTheme } = this.state;
+    const theme = themes[currentTheme];
 
     return (
       <Layout>
         <SEO title="Skillshape Landing Page" />
-        <StaticQuery
-          query={graphql`
+        <section className="main-screen">
+          <StaticQuery
+            query={graphql`
             query {
               allFile(filter:{extension:{regex:"/(jpeg|jpg|gif|png)/"},  sourceInstanceName:{eq:"images"}}) {
                 edges {
@@ -83,40 +92,49 @@ class IndexPage extends React.Component {
               }
             }
           `}
-          render={data => (
-            <div className="bg-container">
-              {data.allFile.edges.map(({ node: { childImageSharp: { fluid } } }) => (
-                <Fade
-                  key={fluid.src}
-                  when={theme.img === fluid.src.slice(-8)}
-                >
-                  <Parallax>
-                    <Img
-                      fluid={fluid}
-                      alt={MAIN.BACKGROUND_ALT}
-                    />
-                  </Parallax>
-                </Fade>
-              ))}
+            render={data => (
+              <div className="bg-container">
+                {data.allFile.edges.map(({ node: { childImageSharp: { fluid } } }) => (
+                  <Fade
+                    key={fluid.src}
+                    when={theme.img === fluid.src.slice(-8)}
+                  >
+                    <Parallax>
+                      <Img
+                        fluid={fluid}
+                        alt={MAIN.BACKGROUND_ALT}
+                      />
+                    </Parallax>
+                  </Fade>
+                ))}
+              </div>
+            )}
+          />
+          <div className="main-text">
+            <div className="lines disable-animations">
+              <span
+                className={`red ${currentTheme === 0 && 'active'}`}
+                onClick={() => this.changeTheme(0)}
+              />
+              <span
+                className={`green ${currentTheme === 1 && 'active'}`}
+                onClick={() => this.changeTheme(1)}
+              />
+              <span
+                className={`yellow ${currentTheme === 2 && 'active'}`}
+                onClick={() => this.changeTheme(2)}
+              />
             </div>
-          )}
-        />
-        <div className="main-text">
-          <div className="lines">
-            <span className={`red ${themeId === 0 && 'active'}`} />
-            <span className={`green ${themeId === 1 && 'active'}`} />
-            <span className={`yellow ${themeId === 2 && 'active'}`} />
-          </div>
-          <div className="hero-text">
-            <h2>
-              { MAIN.HERO_TEXT[0] }
-              <span>{ MAIN.HERO_TEXT[1] }</span>
-              { MAIN.HERO_TEXT[2] }
-            </h2>
-            <div>
-              {
+            <div className="hero-text">
+              <h2>
+                { MAIN.HERO_TEXT[0] }
+                <span>{ MAIN.HERO_TEXT[1] }</span>
+                { MAIN.HERO_TEXT[2] }
+              </h2>
+              <div>
+                {
                 Object.keys(themes).map(i => (
-                  <Fade when={themeId === +i}>
+                  <Fade when={currentTheme === +i}>
                     <h1>
                       <span className={themes[i].color}>
                         {themes[i].text.make}
@@ -125,33 +143,34 @@ class IndexPage extends React.Component {
                   </Fade>
                 ))
               }
-              <h1>{ MAIN.HERO_TEXT[3] }</h1>
+                <h1>{ MAIN.HERO_TEXT[3] }</h1>
+              </div>
+            </div>
+            <div className={`buttons-wrapper ${theme.color}`}>
+              <button className="plain-btn">
+                <h5>{ MAIN.BTN_STUDENT }</h5>
+              </button>
+              <button className="color-btn">
+                <h5>{ MAIN.BTN_SCHOOL }</h5>
+              </button>
+            </div>
+            <h5 className="hurry-up">
+              { MAIN.HURRY_UP[0] }
+              <span>{ MAIN.HURRY_UP[1] }</span>
+              { MAIN.HURRY_UP[2] }
+            </h5>
+          </div>
+          <div className="learn-more-block">
+            <button className={theme.color}>
+              <h5>{ MAIN.BTN_LEARN_MORE }</h5>
+            </button>
+            <div className="arrows">
+              <span />
+              <span />
+              <span />
             </div>
           </div>
-          <div className={`buttons-wrapper ${theme.color}`}>
-            <button className="plain-btn">
-              <h3>{ MAIN.BTN_STUDENT }</h3>
-            </button>
-            <button className="color-btn">
-              <h3>{ MAIN.BTN_SCHOOL }</h3>
-            </button>
-          </div>
-          <h4>
-            { MAIN.HURRY_UP[0] }
-            <span>{ MAIN.HURRY_UP[1] }</span>
-            { MAIN.HURRY_UP[2] }
-          </h4>
-        </div>
-        <div className="learn-more-block">
-          <button className={theme.color}>
-            <h4>{ MAIN.BTN_LEARN_MORE }</h4>
-          </button>
-          <div className="arrows">
-            <span />
-            <span />
-            <span />
-          </div>
-        </div>
+        </section>
       </Layout>
     );
   }

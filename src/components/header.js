@@ -9,8 +9,8 @@ const Header = () => (
     <div className="logo-block">
       <Logo />
       <div>
-        <h3>{ HEADER.LOGO[0] }</h3>
-        <h5>{ HEADER.LOGO[1] }</h5>
+        <h4>{ HEADER.LOGO[0] }</h4>
+        <h6>{ HEADER.LOGO[1] }</h6>
       </div>
     </div>
     <div className="menu">

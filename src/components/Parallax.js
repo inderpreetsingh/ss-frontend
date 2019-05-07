@@ -54,7 +54,7 @@ class Parallax extends React.Component {
         clientX: mouseX,
         clientY: mouseY,
       } = e;
-      const amplitude = 2; // If change this, change also styles for ".parallax" .
+      const amplitude = 1; // If change this, change also styles for ".parallax" .
       const stepX = centerX / amplitude;
       const stepY = centerY / amplitude;
       bg.style.transform = `translate(${-1 * (((mouseX - centerX) / stepX) + amplitude)}vw, ${-1 * (((mouseY - centerY) / stepY) + amplitude)}vh)`;

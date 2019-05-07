@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,500,700|Zilla+Slab:300,300i,500,700');
 
 $red: #db4c48;
-$darken-red: #9b433f;
+$darken-red: #872727;
 
 $blue: #318dc1;
 $darken-blue: #235e81;
@@ -37,14 +37,9 @@ html {
   line-height: 1rem;
 }
 
-body {
-  // Temporary fix.
-  overflow: hidden;
-}
-
 button, a {
   border: none;
-  cursor: none;
+  cursor: pointer;
   transition: background-color 0.3s;
 
   &:focus, &:active {
@@ -65,13 +60,13 @@ h3, h4, h5, h6, p {
 }
 
 h1 {
-  font-size: 5rem;
-  line-height: 5rem;
+  font-size: 3.5rem;
+  line-height: 3.5rem;
 }
 
 h2 {
-  font-size: 3rem;
-  line-height: 3rem;
+  font-size: 2.25rem;
+  line-height: 2.25rem;
 }
 
 h3 {
@@ -108,29 +103,30 @@ h6, p {
     align-items: center;
 
     svg {
-      width: 4rem;
-      height: 4rem;
+      width: 3.5rem;
+      height: 3.5rem;
       margin-right: 0.5rem;
     }
 
-    h3 {
+    h4 {
       font-weight: $medium;
     }
 
-    h5 {
+    h6 {
       font-weight: $thin;
       font-style: italic;
     }
   }
 
   .menu {
-   span {
+    cursor: pointer;
+    span {
       width: 100%;
-      height: 4px;
+      height: 0.25rem;
       background: #fff;
-      margin-bottom: 5px;
+      margin-bottom: 0.25rem;
       display: block;
-      border-radius: 2px;
+      border-radius: 0.125rem;
 
       &:nth-child(2) {
         width: 80%;
@@ -138,305 +134,292 @@ h6, p {
       }
     }
   }
-
-  p {
-    font-size: 12px;
-    @media (min-width: 425px) {
-      font-size: initial;
-    }
-  }
 }
 
-.bg-container {
-  position: relative;
+.main-screen {
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  min-height: 360px; // To prevent overlapping on small screens.
+  position: relative;
+  background: #000;
 
-  .react-reveal {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: 0;
-    left: 0;
+  .bg-container {
+    position: relative;
     overflow: hidden;
+    width: 100%;
+    height: 100%;
 
-    .parallax {
-      transition: 0.12s;
-      min-height: 104vh; // 100 + 2 * amplitude
-      min-width: 104vw;  // 100 + 2 * amplitude
-      transform: translate(-2vw, -2vh);   // ( -amplitude, -amplitude )
+    .react-reveal {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 0;
+      left: 0;
+      overflow: hidden;
 
-      .gatsby-image-wrapper {
-        min-height: 110vh;
-        min-width: 110vw;
+      .parallax {
+        transition: 0.2s;
+        min-height: 102%; // 100 + 2 * amplitude
+        min-width: 102%; // 100 + 2 * amplitude
+        transform: translate(-1%, -1%); // ( -amplitude, -amplitude )
+        display: flex;
+
+        .gatsby-image-wrapper {
+          flex-grow: 1;
+        }
       }
     }
   }
-}
 
-.main-text {
-  position: absolute;
-  transform: translateY(-50%);
-  top: 50%;
-  color: white;
-  padding: 1.25rem;
+  .main-text {
+    position: absolute;
+    transform: translateY(-50%);
+    top: 50%;
+    color: white;
+    padding: 1.25rem;
 
-  .lines {
-    display: flex;
-    width: 15rem;
-    margin-bottom: 2.5rem;
+    .lines {
+      display: flex;
+      width: 15rem;
+      margin-bottom: 2rem;
 
-    span {
-      display: block;
-      height: 0.5rem;
-      border-radius: 0.25rem;
-      margin-right: 0.5rem;
-      flex-grow: 1;
-      transition: 1s;
+      span {
+        cursor: pointer;
+        display: block;
+        height: 0.5rem;
+        border-radius: 0.25rem;
+        margin-right: 0.5rem;
+        transition: flex-grow 10s;
+        flex-grow: 1;
 
-      &.active {
-        flex-grow: 3;
+        &.red {
+          background: $darken-red;
+        }
+
+        &.green {
+          background: $darken-green;
+        }
+
+        &.yellow {
+          background: $darken-yellow;
+        }
+
+        &.active {
+          flex-grow: 3;
+          &.red {
+            background: $red;
+          }
+          &.green {
+            background: $green;
+          }
+          &.yellow {
+            background: $yellow;
+          }
+        }
+
+        &:nth-last-child(1) {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .hero-text {
+      margin-bottom: 2rem;
+
+      h2 {
+        font-weight: $thin;
+        margin-bottom: 1.25rem;
+
+        span {
+          font-weight: $bold;
+        }
+      }
+
+      h1 {
+        text-transform: uppercase;
+
+        &:nth-last-child(1) {
+          margin-left: 16.25rem
+        }
+
+        span {
+          position: absolute;
+
+          &.red {
+            color: $red;
+          }
+
+          &.green {
+            color: $green;
+          }
+
+          &.yellow {
+            color: $yellow;
+          }
+        }
+      }
+    }
+
+    .buttons-wrapper {
+      margin-bottom: 1.25rem;
+
+      button {
+        color: #fff;
+        margin-right: 1.25rem;
+        text-transform: uppercase;
+        font-weight: bold;
+        padding: 0 2rem;
+        height: 3.5rem;
+        transition: 0.3s;
+
+        h5 {
+          font-family: 'Oswald', sans-serif;
+          letter-spacing: 1px;
+        }
+
+        &:nth-last-child(1) {
+          margin-right: 0;
+        }
+      }
+
+      .plain-btn {
+        background: transparent;
+        border: 0.2rem solid #fff;
+        &:hover {
+          color: #000;
+          background: #fff;
+        }
+      }
+
+      .color-btn {
+        position: relative;
+
+        &:after {
+          content: "";
+          display: block;
+          position: absolute;
+          top: 0;
+          bottom: 0;
+          right: 0;
+          left: 0;
+          border: 0.2rem solid transparent;
+          transition: border 0.3s;
+        }
       }
 
       &.red {
-        background: $darken-red;
-
-        &.active {
+        .color-btn {
           background: $red;
+          &:hover {
+            background: $darken-red;
+          }
         }
       }
 
       &.green {
-        background: $darken-green;
-
-        &.active {
+        .color-btn {
           background: $green;
+          &:hover {
+            background: $darken-green;
+          }
         }
       }
 
       &.yellow {
-        background: $darken-yellow;
-
-        &.active {
+        .color-btn {
           background: $yellow;
+          &:hover {
+            background: $darken-yellow;
+          }
         }
       }
 
-      &:nth-last-child(1) {
-        margin-right: 0;
-      }
     }
-  }
 
-  .hero-text {
-    margin-bottom: 2.5rem;
 
-    h2 {
-      font-weight: $thin;
-      margin-bottom: 1.25rem;
-
-      max-width: 300px;
-      @media (min-width: 425px) {
-        max-width: 400px;
-      }
-      @media (min-width: 768px) {
-        max-width: none;
-      }
+    h5.hurry-up {
+      font-weight: $medium;
+      font-style: italic;
 
       span {
         font-weight: $bold;
       }
     }
-
-    h1 {
-      text-transform: uppercase;
-      &:nth-last-child(1) {
-        margin-left: 23rem
-      }
-
-      span {
-        position: absolute;
-        &.red {
-          color: $red;
-        }
-
-        &.green {
-          color: $green;
-        }
-
-        &.yellow {
-          color: $yellow;
-        }
-      }
-    }
   }
 
-  .buttons-wrapper {
-    margin-bottom: 1.25rem;
+  .learn-more-block {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
 
     button {
-      color: #fff;
-      margin-right: 1.25rem;
-      text-transform: uppercase;
-      font-weight: bold;
-      padding: 0 1.5rem;
-      height: 4rem;
-
-      h3 {
-        font-family: 'Oswald', sans-serif;
-      }
-
-      &:nth-last-child(1) {
-        margin-right: 0;
-      }
-    }
-
-    .plain-btn {
       background: transparent;
-      border: 0.25rem solid #fff;
+      border: 0.1rem solid #fff;
+      color: #fff;
+      padding: 0.75rem 1.5rem;
+      margin-bottom: 0.5rem;
+      transition: 0.3s;
+
+      h5 {
+        font-family: 'Oswald', sans-serif;
+        font-weight: $thin;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+      }
+
+      &:hover {
+        color: #000;
+        background: #fff;
+      }
     }
 
-    .color-btn {
+    .arrows {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: 1.25rem;
       position: relative;
+      height: 2.25rem;
 
-      &:after {
-        content: "";
+      span {
+        width: 1rem;
+        height: 1rem;
         display: block;
         position: absolute;
-        top: 0;
-        bottom: 0;
-        right: 0;
-        left: 0;
-        border: 0.25rem solid transparent;
-        transition: border 0.3s;
-      }
-
-      &:hover:after {
-        border: 0.25rem solid #fff;
-      }
-    }
-
-    &.red {
-      .color-btn {
-        background: $red;
-      }
-
-      .plain-btn:hover {
-        background: $red;
-      }
-    }
-
-    &.green {
-      .color-btn {
-        background: $green;
-      }
-
-      .plain-btn:hover {
-        background: $green;
-      }
-    }
-
-    &.yellow {
-      .color-btn {
-        background: $yellow;
-      }
-
-      .plain-btn:hover {
-        background: $yellow;
-      }
-    }
-
-  }
-
-
-  h4 {
-    font-weight: $medium;
-    font-style: italic;
-
-    span {
-      font-weight: $bold;
-    }
-  }
-}
-
-.learn-more-block {
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-
-  button {
-    background: transparent;
-    border: 0.125rem solid #fff;
-    color: #fff;
-    padding: 0.75rem 1.5rem;
-    margin-bottom: 0.5rem;
-
-    h4 {
-      font-family: 'Oswald', sans-serif;
-      font-weight: $thin;
-      text-transform: uppercase;
-    }
-
-    &:hover {
-      &.red {
-        background: $red;
-      }
-      &.green {
-        background: $green;
-      }
-      &.yellow {
-        background: $yellow;
-      }
-    }
-  }
-
-  .arrows {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 1.25rem;
-    position: relative;
-    height: 2.25rem;
-
-    span {
-      width: 1rem;
-      height: 1rem;
-      display: block;
-      position: absolute;
-      border-right: 0.125rem solid #fff;
-      border-bottom: 0.125rem solid #fff;
-      transform: rotate(45deg) translate(-50%, -50%);
-      animation: flash 1s infinite;
-      @keyframes flash {
-        0% {
-          opacity: .25
+        border-right: 0.1rem solid #fff;
+        border-bottom: 0.1rem solid #fff;
+        transform: rotate(45deg) translate(-50%, -50%);
+        animation: flash 1.85s infinite;
+        @keyframes flash {
+          0% {
+            opacity: .15
+          }
+          40% {
+            opacity: .65
+          }
+          80% {
+            opacity: .15
+          }
+          100% {
+            opacity: .15
+          }
         }
-        40% {
-          opacity: 1
-        }
-        80% {
-          opacity: .25
-        }
-        100% {
-          opacity: .25
-        }
-      }
 
-      &:nth-child(1) {
-        top: 0.5rem;
-        animation-delay: -0.5s;
-      }
+        &:nth-child(1) {
+          top: 0.5rem;
+          animation-delay: -0.5s;
+        }
 
-      &:nth-child(2) {
-        top: 1rem;
-        animation-delay: -0.25s;
-      }
+        &:nth-child(2) {
+          top: 1rem;
+          animation-delay: -0.25s;
+        }
 
-      &:nth-child(3) {
-        top: 1.5rem;
-        animation-delay: 0s;
+        &:nth-child(3) {
+          top: 1.5rem;
+          animation-delay: 0s;
+        }
       }
     }
   }
@@ -449,10 +432,9 @@ h6, p {
   height: 10px;
   left: -5px;
   top: -5px;
-  //margin: -5px;
   z-index: 999;
   border-radius: 50%;
-  position: absolute;
+  position: fixed; // To prevent body overflow
 
   background: $red;
   animation: bg-color-change 18s infinite;
@@ -482,7 +464,7 @@ h6, p {
 .cursor-following-circle {
   cursor: none;
   pointer-events: none;
-  position: absolute;
+  position: fixed; // To prevent body overflow
   width: 40px;
   height: 40px;
   top: -20px;
