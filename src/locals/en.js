@@ -11,10 +11,10 @@ module.exports = {
         make: 'Stronger',
       },
       1: {
-        make: 'Healthier',
+        make: 'Balanced',
       },
       2: {
-        make: 'Charming',
+        make: 'Expressive',
       },
     },
     BTN_STUDENT: 'I am a student',
