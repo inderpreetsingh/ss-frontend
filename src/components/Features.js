@@ -9,6 +9,7 @@ class Features extends React.Component {
     };
 
     this.content = React.createRef();
+    this.progressBar = React.createRef();
 
     this.toggleMenuSticky = this.toggleMenuSticky.bind(this);
     this.updateProgressBar = this.updateProgressBar.bind(this);
@@ -67,7 +68,7 @@ class Features extends React.Component {
       if (scrolled < 0) scrolled = 0;
       if (scrolled > 100) scrolled = 100;
 
-      console.log('scrolled', scrolled);
+      this.progressBar.current.style.width = `${scrolled}%`;
     });
   }
 
@@ -78,17 +79,30 @@ class Features extends React.Component {
       <section className="features">
 
         <div className={`top ${isMenuSticky ? 'sticky' : ''}`}>
-          <ol className="steps">
-            <li>Bring more students.</li>
-            <li>Keep students excited.</li>
-            <li>Hassle-free administration.</li>
-          </ol>
-          <div className="progress-bar">
-            <span className="point" />
-            <span className="line" />
-            <span className="point" />
-            <span className="line" />
-            <span className="point" />
+          <div className="steps">
+            <ol>
+              <li>Bring more students.</li>
+              <li>Keep students excited.</li>
+              <li>Hassle-free administration.</li>
+            </ol>
+          </div>
+          <div className="progress-bar-wrapper">
+            <div className="progress-bar">
+              <div className="line">
+                <span className="point" />
+                <span className="point" />
+                <span className="point" />
+              </div>
+              <div className="filling-wrapper" ref={this.progressBar}>
+                <div className="filling">
+                  <div className="line">
+                    <span className="point" />
+                    <span className="point" />
+                    <span className="point" />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -97,13 +111,13 @@ class Features extends React.Component {
           <div className="info-block">
             <div className="text-wrapper">
               <div className="text description">
-                <h2>Bring more students in your school.</h2>
-                <p>
+                <h1>Bring more students in your school.</h1>
+                <h4>
                   <b>Get found, build your online presence and increase your revenue </b>
                   with patented tools that you can use here on skillshape
                   <b> for free </b>
                   or even embed them on your own website.
-                </p>
+                </h4>
               </div>
             </div>
             <div className="slider-wrapper">
@@ -114,7 +128,7 @@ class Features extends React.Component {
                 <ul>
                   <li>
                     <div className="icon" />
-                    <h6>Beautiful directory with filters</h6>
+                    <h4>Beautiful directory with filters</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -122,7 +136,7 @@ class Features extends React.Component {
                   </li>
                   <li>
                     <div className="icon" />
-                    <h6>Patented media Management</h6>
+                    <h4>Patented media Management</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -130,7 +144,7 @@ class Features extends React.Component {
                   </li>
                   <li>
                     <div className="icon" />
-                    <h6>Embed tools for your own website</h6>
+                    <h4>Embed tools for your own website</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -144,13 +158,13 @@ class Features extends React.Component {
           <div className="info-block">
             <div className="text-wrapper">
               <div className="text description">
-                <h2>Keep students excited about school.</h2>
-                <p>
+                <h1>Keep students excited about school.</h1>
+                <h4>
                   <b>Get found, build your online presence and increase your revenue </b>
                   with patented tools that you can use here on skillshape
                   <b> for free </b>
                   or even embed them on your own website.
-                </p>
+                </h4>
               </div>
             </div>
             <div className="slider-wrapper">
@@ -161,7 +175,7 @@ class Features extends React.Component {
                 <ul>
                   <li>
                     <div className="icon" />
-                    <h6>Provide valuable data insights</h6>
+                    <h4>Provide valuable data insights</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -169,7 +183,7 @@ class Features extends React.Component {
                   </li>
                   <li>
                     <div className="icon" />
-                    <h6>Track attendance</h6>
+                    <h4>Track attendance</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -183,13 +197,13 @@ class Features extends React.Component {
           <div className="info-block">
             <div className="text-wrapper">
               <div className="text description">
-                <h2>Manage school's administrative chores.</h2>
-                <p>
+                <h1>Manage school's administrative chores.</h1>
+                <h4>
                   <b>Get found, build your online presence and increase your revenue </b>
                   with patented tools that you can use here on skillshape
                   <b> for free </b>
                   or even embed them on your own website.
-                </p>
+                </h4>
               </div>
             </div>
             <div className="slider-wrapper">
@@ -200,7 +214,7 @@ class Features extends React.Component {
                 <ul>
                   <li>
                     <div className="icon" />
-                    <h6>Financial Management</h6>
+                    <h4>Financial Management</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -208,7 +222,7 @@ class Features extends React.Component {
                   </li>
                   <li>
                     <div className="icon" />
-                    <h6>Intuitive Dashboard</h6>
+                    <h4>Intuitive Dashboard</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.
@@ -216,7 +230,7 @@ class Features extends React.Component {
                   </li>
                   <li>
                     <div className="icon" />
-                    <h6>Connect with students</h6>
+                    <h4>Connect with students</h4>
                     <p>
                       SkillShape's beautiful directory highlights your school and
                       it's offerings, and makes it easy for students to find what they need.

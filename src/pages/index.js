@@ -9,6 +9,12 @@ import Footer from '../components/Footer';
 import 'normalize.css';
 import '../styles/main.scss';
 
+// TODO: No parallax onblur.
+// TODO: Svg.
+// TODO: Adaptive work.
+// TODO: Slider.
+
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Skillshape Landing Page" />
