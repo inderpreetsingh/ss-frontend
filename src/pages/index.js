@@ -10,10 +10,8 @@ import 'normalize.css';
 import '../styles/main.scss';
 
 // TODO: No parallax onblur.
-// TODO: Svg.
-// TODO: Adaptive work.
 // TODO: Slider.
-
+// TODO: Make fonts of body grey color.
 
 const IndexPage = () => (
   <Layout>

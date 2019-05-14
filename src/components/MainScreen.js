@@ -118,26 +118,26 @@ class MainScreen extends React.Component {
               onClick={() => this.changeTheme(2)}
             />
           </div>
-          <div className="hero-text">
-            <h2>
-              { MAIN.HERO_TEXT[0] }
-              <span>{ MAIN.HERO_TEXT[1] }</span>
-              { MAIN.HERO_TEXT[2] }
-            </h2>
-            <div className="changing-text-wrapper">
-              {
-                Object.keys(themes).map(i => (
-                  <Fade when={currentTheme === +i}>
+          <div className="changing-text-wrapper">
+            {
+              Object.keys(themes).map(i => (
+                <Fade when={currentTheme === +i}>
+                  <div className="hero-text">
+                    <h2>
+                      {MAIN.HERO_TEXT[0]}
+                      <span>{MAIN.HERO_TEXT[1]}</span>
+                      {MAIN.HERO_TEXT[2]}
+                    </h2>
                     <h1>
                       <span className={themes[i].color}>
                         {themes[i].text.make}
                       </span>
-                      { MAIN.HERO_TEXT[3] }
+                      {MAIN.HERO_TEXT[3]}
                     </h1>
-                  </Fade>
-                ))
-              }
-            </div>
+                  </div>
+                </Fade>
+              ))
+            }
           </div>
           <div className={`buttons-wrapper ${theme.color}`}>
             <button className="plain-btn">
