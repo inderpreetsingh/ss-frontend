@@ -37,6 +37,7 @@ class MainScreen extends React.Component {
     this.counter = null;
 
     this.count = this.count.bind(this);
+    this.goToNextScreen = this.goToNextScreen.bind(this);
   }
 
   componentDidMount() {
@@ -63,6 +64,17 @@ class MainScreen extends React.Component {
     this.counter = setInterval(this.count, 10000);
   }
 
+  goToNextScreen() {
+    const screenHeight = window.innerHeight
+      || document.documentElement.clientHeight
+      || document.body.clientHeight;
+
+    window.scrollTo({
+      top: screenHeight + 1, // To make menu sticky.
+      behavior: 'smooth',
+    });
+  }
+
   render() {
     const { currentTheme } = this.state;
     const theme = themes[currentTheme];
@@ -87,19 +99,19 @@ class MainScreen extends React.Component {
           `}
           render={data => (
             <div className="bg-container">
-              {data.allFile.edges.map(({ node: { childImageSharp: { fluid } } }) => (
-                <Fade
-                  key={fluid.src}
-                  when={theme.img === fluid.src.split('/').pop()}
-                >
-                  <Parallax>
+              <Parallax>
+                {data.allFile.edges.map(({ node: { childImageSharp: { fluid } } }) => (
+                  <Fade
+                    key={fluid.src}
+                    when={theme.img === fluid.src.split('/').pop()}
+                  >
                     <Img
                       fluid={fluid}
                       alt={MAIN.BACKGROUND_ALT}
                     />
-                  </Parallax>
-                </Fade>
-              ))}
+                  </Fade>
+                ))}
+              </Parallax>
             </div>
           )}
         />
@@ -121,7 +133,7 @@ class MainScreen extends React.Component {
           <div className="changing-text-wrapper">
             {
               Object.keys(themes).map(i => (
-                <Fade when={currentTheme === +i}>
+                <Fade key={i} when={currentTheme === +i}>
                   <div className="hero-text">
                     <h2>
                       {MAIN.HERO_TEXT[0]}
@@ -154,7 +166,7 @@ class MainScreen extends React.Component {
           </h5>
         </div>
         <div className="learn-more-block">
-          <button className={theme.color}>
+          <button className={theme.color} onClick={this.goToNextScreen}>
             <h5>{ MAIN.BTN_LEARN_MORE }</h5>
           </button>
           <div className="arrows">

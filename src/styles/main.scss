@@ -1,9 +1,9 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,500,700|Zilla+Slab:300,300i,500,700');
 
 // Constants
-$grey: #333;
+$grey: #4b4a4a;
+$darken-grey: #323232;
 $lighten-grey: #eee;
-$darken-grey: #101010;
 
 $red: #db4c48;
 $darken-red: #872727;
@@ -228,31 +228,34 @@ h6, p {
   background: #000;
 
   .bg-container {
-    position: relative;
-    overflow: hidden;
     width: 100%;
     height: 100%;
 
-    .react-reveal {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      right: 0;
-      left: 0;
+    .parallax-wrapper {
+      width: 100%;
+      height: 100%;
       overflow: hidden;
 
       .parallax {
-        transition: 0.2s;
-        min-height: 102%; // 100 + 2 * amplitude
-        min-width: 102%; // 100 + 2 * amplitude
+        position: relative;
+        width: 102%; // 100 + 2 * amplitude
+        height: 102%; // 100 + 2 * amplitude
         transform: translate(-1%, -1%); // ( -amplitude, -amplitude )
-        display: flex;
+        transition: 0.2s;
+
+        .react-reveal {
+          position: absolute;
+          min-height: 100%;
+          min-width: 100%;
+          display: flex;
+        }
 
         .gatsby-image-wrapper {
           flex-grow: 1;
         }
       }
     }
+
   }
 
   .main-text {
@@ -318,6 +321,7 @@ h6, p {
 
       .hero-text {
         position: absolute;
+
         h2 {
           font-weight: $thin;
           margin-bottom: 1.25rem;
@@ -521,7 +525,7 @@ h6, p {
 .features {
   .top {
     .steps {
-      background: $grey;
+      background: $darken-grey;
       color: #fff;
 
       ol {
@@ -636,6 +640,7 @@ h6, p {
       align-items: center;
       height: auto;
       padding: 0;
+      margin-bottom: 10rem;
       @media (min-width: 1220px) {
         height: 27.5rem;
         align-items: initial;
@@ -644,12 +649,14 @@ h6, p {
         padding: 0 2.5rem;
       }
 
-      &:nth-child(1) {
-        margin-bottom: 10rem;
+      &:nth-child(2) {
+        @media (min-width: 1220px) {
+          margin-bottom: 20rem;
+        }
       }
 
-      &:nth-child(2) {
-        margin-bottom: 20rem;
+      &:nth-last-child(1) {
+        margin-bottom: 0;
       }
 
       // To reverse the blocks.
@@ -663,7 +670,9 @@ h6, p {
         }
 
         .bg-icon {
-          left: -7.5rem;
+          @media (min-width: 1220px) {
+            left: -7.5rem;
+          }
         }
       }
 
@@ -702,6 +711,7 @@ h6, p {
 
             h4 {
               font-weight: $thin;
+              color: $grey;
             }
           }
 
@@ -716,19 +726,6 @@ h6, p {
                   width: 80%;
                 }
 
-                &:hover, &.active {
-                  h4 {
-                    color: $blue;
-                    font-weight: $medium;
-                  }
-
-                  .title {
-                    svg {
-                      fill: $blue;
-                    }
-                  }
-                }
-
                 &:nth-last-child(1) {
                   margin-bottom: 0;
                 }
@@ -741,6 +738,7 @@ h6, p {
                     font-family: 'Oswald', sans-serif;
                     font-weight: $thin;
                     margin-bottom: 0.5rem;
+                    color: $grey;
                   }
 
                   svg {
@@ -759,7 +757,18 @@ h6, p {
                   display: none;
                 }
 
-                &.active {
+                &:hover, &.active {
+                  h4 {
+                    color: $blue;
+                    font-weight: $medium;
+                  }
+
+                  .title {
+                    svg {
+                      fill: $blue;
+                    }
+                  }
+
                   p {
                     display: block;
                   }
@@ -791,15 +800,27 @@ h6, p {
           width: 50%;
         }
 
-        //Temporary
         .slider {
           width: 100%;
           height: 27.5rem;
           background: #9dc263;
           border-radius: 2rem;
+          position: relative;
+          overflow: hidden;
           @media (min-width: 1220px) {
             width: 90%;
             margin: auto;
+          }
+          .react-reveal {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            .gatsby-image-wrapper {
+              min-height: 100%;
+              min-width: 100%;
+            }
           }
         }
       }
@@ -831,7 +852,7 @@ h6, p {
   }
 
   .content {
-    background-color: $darken-grey;
+    background-color: #101010;
     color: #fff;
     padding: 5rem 0;
 

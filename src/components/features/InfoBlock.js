@@ -1,4 +1,6 @@
 import React from 'react';
+import Fade from 'react-reveal/Fade';
+import Img from 'gatsby-image';
 
 class InfoBlock extends React.Component {
   constructor(props) {
@@ -25,6 +27,7 @@ class InfoBlock extends React.Component {
         options,
       },
       index,
+      images,
     } = this.props;
     const { active } = this.state;
 
@@ -40,28 +43,41 @@ class InfoBlock extends React.Component {
           </div>
         </div>
         <div className="slider-wrapper">
-          <div className="slider" />
+          <div className="slider">
+            {
+              images.map(({ node: { childImageSharp: { fluid } } }) => (
+                <Fade
+                  key={fluid.src}
+                  when={options[active].img === fluid.src.split('/').pop()}
+                >
+                  <Img
+                    fluid={fluid}
+                  />
+                </Fade>
+              ))
+            }
+          </div>
         </div>
         <div className="text-wrapper">
           <div className="text options">
             <ul>
               {
-              options.map(({ icon, heading, description }, id) => {
-                const Icon = icon;
-                return (
-                  <li
-                    className={active === id ? 'active' : ''}
-                    onMouseOver={() => this.onOptionHover(id)}
-                  >
-                    <div className="title">
-                      <Icon />
-                      <h4>{heading}</h4>
-                    </div>
-                    <p>{description}</p>
-                  </li>
-                );
-              })
-            }
+                options.map(({ icon, heading, description }, id) => {
+                  const Icon = icon;
+                  return (
+                    <li
+                      className={active === id ? 'active' : ''}
+                      onMouseOver={() => this.onOptionHover(id)}
+                    >
+                      <div className="title">
+                        <Icon />
+                        <h4>{heading}</h4>
+                      </div>
+                      <p>{description}</p>
+                    </li>
+                  );
+                })
+              }
             </ul>
           </div>
         </div>

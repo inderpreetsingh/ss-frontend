@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { graphql, StaticQuery } from 'gatsby';
 import ProgressBar from './features/ProgressBar';
 import InfoBlock from './features/InfoBlock';
 
@@ -28,18 +29,21 @@ const blocks = [
     options: [
       {
         icon: Filter,
+        img: 'abstract_1.jpg',
         heading: 'Beautiful directory with filters',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
       },
       {
         icon: Photo,
+        img: 'abstract_2.jpg',
         heading: 'Patented media Management',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
       },
       {
         icon: Coding,
+        img: 'abstract_3.jpg',
         heading: 'Embed tools for your own website',
         description: `SkillShape's beautiful directory highlights your school
         and it's offerings, and makes it easy for students to find what they need.`,
@@ -61,12 +65,14 @@ const blocks = [
     options: [
       {
         icon: Chart,
+        img: 'abstract_1.jpg',
         heading: 'Provide valuable data insights',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
       },
       {
         icon: Calendar,
+        img: 'abstract_2.jpg',
         heading: 'Track attendance',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
@@ -88,18 +94,21 @@ const blocks = [
     options: [
       {
         icon: CreditCard,
+        img: 'abstract_1.jpg',
         heading: 'Financial Management',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
       },
       {
         icon: LandingPage,
+        img: 'abstract_2.jpg',
         heading: 'Intuitive Dashboard',
         description: `SkillShape's beautiful directory highlights your school 
         and it's offerings, and makes it easy for students to find what they need.`,
       },
       {
         icon: Chat,
+        img: 'abstract_3.jpg',
         heading: 'Connect with students',
         description: `SkillShape's beautiful directory highlights your school
         and it's offerings, and makes it easy for students to find what they need.`,
@@ -116,7 +125,7 @@ class Features extends React.Component {
       isMenuSticky: false,
     };
 
-    this.content = React.createRef();
+    this.featuresSection = React.createRef();
 
     this.toggleMenuSticky = this.toggleMenuSticky.bind(this);
   }
@@ -157,7 +166,7 @@ class Features extends React.Component {
     const { isMenuSticky } = this.state;
 
     return (
-      <section className="features">
+      <section className="features" ref={this.featuresSection}>
         <div className={`top ${isMenuSticky ? 'sticky' : ''}`}>
           <div className="steps">
             <ol>
@@ -166,10 +175,40 @@ class Features extends React.Component {
               <li>Hassle-free administration.</li>
             </ol>
           </div>
-          <ProgressBar contentRef={this.content} />
+          <ProgressBar featuresSectionFef={this.featuresSection} />
         </div>
-        <div className="content" ref={this.content}>
-          {blocks.map((data, index) => <InfoBlock data={data} index={index} />)}
+        <div className="content">
+          <StaticQuery
+            query={graphql`
+            query {
+              allFile(filter:{extension:{regex:"/(jpeg|jpg|gif|png)/"}, sourceInstanceName:{eq:"features"}}) {
+                edges {
+                  node {
+                    childImageSharp {
+                      fluid(quality: 100, maxWidth: 1080, maxHeight: 720) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              } 
+             
+            }
+          `}
+            render={({ allFile: { edges } }) => (
+              <>
+                {
+                  blocks.map((data, index) => (
+                    <InfoBlock
+                      data={data}
+                      index={index}
+                      images={edges}
+                    />
+                  ))
+                }
+              </>
+            )}
+          />
         </div>
       </section>
     );

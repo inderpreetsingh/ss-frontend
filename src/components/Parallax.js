@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 class Parallax extends React.Component {
   constructor(props) {
@@ -47,8 +46,11 @@ class Parallax extends React.Component {
   }
 
   moveBg(e) {
+    const bg = this.bg.current;
+    if (!bg.contains(e.target)) {
+      return;
+    }
     requestAnimationFrame(() => {
-      const bg = this.bg.current;
       const { centerX, centerY } = this.state;
       const {
         clientX: mouseX,
@@ -57,25 +59,23 @@ class Parallax extends React.Component {
       const amplitude = 1; // If change this, change also styles for ".parallax" .
       const stepX = centerX / amplitude;
       const stepY = centerY / amplitude;
-      bg.style.transform = `translate(${-1 * (((mouseX - centerX) / stepX) + amplitude)}vw, ${-1 * (((mouseY - centerY) / stepY) + amplitude)}vh)`;
+      bg.style.transform = `translate(${-1 * (((mouseX - centerX) / stepX) + amplitude)}%, ${-1 * (((mouseY - centerY) / stepY) + amplitude)}%)`;
     });
   }
 
   render() {
     const { children } = this.props;
     return (
-      <div
-        className="parallax"
-        ref={this.bg}
-      >
-        { children }
+      <div className="parallax-wrapper">
+        <div
+          className="parallax"
+          ref={this.bg}
+        >
+          { children }
+        </div>
       </div>
     );
   }
 }
-
-Parallax.propTypes = {
-  children: PropTypes.element.isRequired,
-};
 
 export default Parallax;
