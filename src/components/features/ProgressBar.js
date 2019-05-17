@@ -18,9 +18,9 @@ class ProgressBar extends React.Component {
   }
 
   updateProgressBar() {
-    const { featuresSectionFef } = this.props;
+    const { featuresSectionRef } = this.props;
     requestAnimationFrame(() => {
-      const content = featuresSectionFef.current;
+      const content = featuresSectionRef.current;
 
       // For better browser support.
       const screenHeight = window.innerHeight

@@ -5,7 +5,10 @@ module.exports = {
   },
   MAIN: {
     BACKGROUND_ALT: 'Background',
-    HERO_TEXT: ['A platform for ', 'institutes ', 'that make the world a ', /* Stronger */ ' Place'],
+    HERO_TEXT: [
+      'We help martial arts schools and gyms ', /* Location */ 'build a ', /* Stronger */ ' world',
+      'We give you the free tools. You just have to teach.',
+    ],
     THEME: {
       0: {
         make: 'Stronger',

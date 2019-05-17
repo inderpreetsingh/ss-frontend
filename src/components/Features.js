@@ -125,8 +125,11 @@ class Features extends React.Component {
       isMenuSticky: false,
     };
 
+    this.steps = []; // Array with refs to steps' info blocks.
+    this.stickyMenu = React.createRef();
     this.featuresSection = React.createRef();
 
+    this.goToStep = this.goToStep.bind(this);
     this.toggleMenuSticky = this.toggleMenuSticky.bind(this);
   }
 
@@ -162,20 +165,39 @@ class Features extends React.Component {
     });
   }
 
+  goToStep(index) {
+    window.scrollTo({
+      top: this.steps[index].offsetTop - this.stickyMenu.current.offsetHeight,
+      behavior: 'smooth',
+    });
+  }
+
   render() {
     const { isMenuSticky } = this.state;
 
     return (
       <section className="features" ref={this.featuresSection}>
-        <div className={`top ${isMenuSticky ? 'sticky' : ''}`}>
+        <div className={`top ${isMenuSticky ? 'sticky' : ''}`} ref={this.stickyMenu}>
           <div className="steps">
             <ol>
-              <li>Bring more students.</li>
-              <li>Keep students excited.</li>
-              <li>Hassle-free administration.</li>
+              <li
+                onClick={() => this.goToStep(0)}
+              >
+                Bring more students.
+              </li>
+              <li
+                onClick={() => this.goToStep(1)}
+              >
+                Keep students excited.
+              </li>
+              <li
+                onClick={() => this.goToStep(2)}
+              >
+                Hassle-free administration.
+              </li>
             </ol>
           </div>
-          <ProgressBar featuresSectionFef={this.featuresSection} />
+          <ProgressBar featuresSectionRef={this.featuresSection} />
         </div>
         <div className="content">
           <StaticQuery
@@ -200,6 +222,8 @@ class Features extends React.Component {
                 {
                   blocks.map((data, index) => (
                     <InfoBlock
+                      /* eslint-disable-next-line no-return-assign */
+                      customRef={el => this.steps[index] = el}
                       data={data}
                       index={index}
                       images={edges}

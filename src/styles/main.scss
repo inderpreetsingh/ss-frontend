@@ -117,6 +117,11 @@ h6, p {
       width: 3rem;
       height: 3rem;
       margin-right: 0.5rem;
+      transition: 1.5s;
+
+      &:hover {
+        transform: rotate(360deg);
+      }
     }
 
     h4 {
@@ -230,28 +235,37 @@ h6, p {
   .bg-container {
     width: 100%;
     height: 100%;
+    background: #000;
 
-    .parallax-wrapper {
-      width: 100%;
-      height: 100%;
-      overflow: hidden;
+    &.hide * {
+      display: none;
+    }
 
-      .parallax {
-        position: relative;
-        width: 102%; // 100 + 2 * amplitude
-        height: 102%; // 100 + 2 * amplitude
-        transform: translate(-1%, -1%); // ( -amplitude, -amplitude )
-        transition: 0.2s;
+    &.reveal {
+      .parallax-wrapper {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
 
-        .react-reveal {
-          position: absolute;
-          min-height: 100%;
-          min-width: 100%;
-          display: flex;
-        }
+        .parallax {
+          position: relative;
+          width: 102%; // 100 + 2 * amplitude
+          height: 102%; // 100 + 2 * amplitude
+          transform: translate(-1%, -1%); // ( -amplitude, -amplitude )
+          transition: 0.2s;
 
-        .gatsby-image-wrapper {
-          flex-grow: 1;
+          .react-reveal {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+              object-position: center center;
+            }
+          }
         }
       }
     }
@@ -317,7 +331,7 @@ h6, p {
     .changing-text-wrapper {
       position: relative;
       margin-bottom: 2rem;
-      height: 7.5rem;
+      height: 9.75rem;
 
       .hero-text {
         position: absolute;
@@ -334,6 +348,7 @@ h6, p {
 
         h1 {
           text-transform: uppercase;
+          margin-bottom: 1.25rem;
 
           span {
             &.red {
@@ -366,7 +381,6 @@ h6, p {
 
         h5 {
           font-family: 'Oswald', sans-serif;
-          letter-spacing: 1px;
         }
 
         &:nth-last-child(1) {
@@ -549,6 +563,7 @@ h6, p {
           line-height: 1.75rem;
           font-family: 'Oswald', sans-serif;
           font-weight: $thin;
+          cursor: pointer;
         }
       }
     }
@@ -561,10 +576,10 @@ h6, p {
         justify-content: center;
         align-items: center;
         padding: 2.5rem;
-        //width: 80rem;
         margin: auto;
         position: relative;
-        width: 100vw;
+        width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
+        max-width:100%;
         @media (min-width: 768px) {
           width: 85vw;
           padding: 2.5rem 0;
@@ -598,7 +613,7 @@ h6, p {
           transition: 0.2s;
 
           .filling {
-            width: 100vw;
+            width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
             padding: 0 2.5rem;
             @media (min-width: 768px) {
               width: 85vw;
@@ -811,12 +826,14 @@ h6, p {
             width: 90%;
             margin: auto;
           }
+
           .react-reveal {
             position: absolute;
             top: 0;
             bottom: 0;
             right: 0;
             left: 0;
+
             .gatsby-image-wrapper {
               min-height: 100%;
               min-width: 100%;

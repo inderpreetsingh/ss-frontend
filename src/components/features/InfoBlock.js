@@ -28,6 +28,7 @@ class InfoBlock extends React.Component {
       },
       index,
       images,
+      customRef,
     } = this.props;
     const { active } = this.state;
 
@@ -35,7 +36,7 @@ class InfoBlock extends React.Component {
     const BgIcon = options[active].icon;
 
     return (
-      <div className="info-block">
+      <div className="info-block" ref={customRef}>
         <div className="text-wrapper">
           <div className="text description">
             <span>{index + 1}.</span>

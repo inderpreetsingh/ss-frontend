@@ -9,6 +9,11 @@ import Footer from '../components/Footer';
 import 'normalize.css';
 import '../styles/main.scss';
 
+// TODO: Make face of women visible.
+// TODO: Animate sub-features rather than abrupt changes
+// TODO: Line-height in fixed heading
+// TODO: Fixed stuff takes a lot of space
+
 const IndexPage = () => (
   <Layout>
     <SEO title="Skillshape Landing Page" />
