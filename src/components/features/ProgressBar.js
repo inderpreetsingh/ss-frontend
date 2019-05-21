@@ -32,8 +32,7 @@ class ProgressBar extends React.Component {
         || document.documentElement.scrollTop
         || document.body.scrollTop;
 
-      const contentScroll = scrollTop - content.offsetTop;
-      let scrolled = 100 * contentScroll / (content.scrollHeight - screenHeight);
+      let scrolled = (scrollTop - content.offsetTop) * 100 / (content.scrollHeight - screenHeight);
       if (scrolled < 0) scrolled = 0;
       if (scrolled > 100) scrolled = 100;
 
@@ -53,9 +52,9 @@ class ProgressBar extends React.Component {
           <div className="filling-wrapper" ref={this.progressBar}>
             <div className="filling">
               <div className="line">
-                <span className="point" />
-                <span className="point" />
-                <span className="point" />
+                <span className="point"> 1 </span>
+                <span className="point"> 2 </span>
+                <span className="point"> 3 </span>
               </div>
             </div>
           </div>

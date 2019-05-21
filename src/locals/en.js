@@ -6,7 +6,7 @@ module.exports = {
   MAIN: {
     BACKGROUND_ALT: 'Background',
     HERO_TEXT: [
-      'We help martial arts schools and gyms ', /* Location */ 'build a ', /* Stronger */ ' world',
+      'We help martial arts schools and gyms ', /* Location */ 'build a ', /* Stronger */ ' world.',
       'We give you the free tools. You just have to teach.',
     ],
     THEME: {

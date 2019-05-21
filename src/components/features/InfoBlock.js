@@ -1,6 +1,7 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
-import Img from 'gatsby-image';
+
+// TODO: Rewrite img alt to locals.
 
 class InfoBlock extends React.Component {
   constructor(props) {
@@ -13,10 +14,10 @@ class InfoBlock extends React.Component {
     this.onOptionHover = this.onOptionHover.bind(this);
   }
 
-  onOptionHover(index) {
+  onOptionHover(i) {
     const { active } = this.state;
-    if (active !== index) {
-      this.setState({ active: index });
+    if (active !== i) {
+      this.setState({ active: i });
     }
   }
 
@@ -27,16 +28,12 @@ class InfoBlock extends React.Component {
         options,
       },
       index,
-      images,
-      customRef,
     } = this.props;
     const { active } = this.state;
 
     const Title = title;
-    const BgIcon = options[active].icon;
-
     return (
-      <div className="info-block" ref={customRef}>
+      <div className="info-block">
         <div className="text-wrapper">
           <div className="text description">
             <span>{index + 1}.</span>
@@ -46,14 +43,11 @@ class InfoBlock extends React.Component {
         <div className="slider-wrapper">
           <div className="slider">
             {
-              images.map(({ node: { childImageSharp: { fluid } } }) => (
-                <Fade
-                  key={fluid.src}
-                  when={options[active].img === fluid.src.split('/').pop()}
-                >
-                  <Img
-                    fluid={fluid}
-                  />
+              options.map(({ img }, i) => (
+                <Fade key={img} when={active === i}>
+                  <div className="image-wrapper">
+                    <img src={img} alt="Option" />
+                  </div>
                 </Fade>
               ))
             }
@@ -63,18 +57,21 @@ class InfoBlock extends React.Component {
           <div className="text options">
             <ul>
               {
-                options.map(({ icon, heading, description }, id) => {
+                options.map(({ icon, heading, description }, i) => {
                   const Icon = icon;
                   return (
                     <li
-                      className={active === id ? 'active' : ''}
-                      onMouseOver={() => this.onOptionHover(id)}
+                      key={heading}
+                      className={active === i ? 'active' : ''}
+                      onClick={() => this.onOptionHover(i)}
                     >
                       <div className="title">
                         <Icon />
                         <h4>{heading}</h4>
                       </div>
-                      <p>{description}</p>
+                      <div className="description-wrapper">
+                        <p>{description}</p>
+                      </div>
                     </li>
                   );
                 })
@@ -82,7 +79,18 @@ class InfoBlock extends React.Component {
             </ul>
           </div>
         </div>
-        <BgIcon className="bg-icon" />
+        <div className="bg-icon-wrapper">
+          {
+            options.map(({ icon }, i) => {
+              const Icon = icon;
+              return (
+                <Fade key={icon} when={i === active}>
+                  <Icon className="bg-icon" />
+                </Fade>
+              );
+            })
+          }
+        </div>
       </div>
     );
   }

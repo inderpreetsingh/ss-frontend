@@ -1,5 +1,9 @@
 import React from 'react';
 
+import CONST from '../../const';
+
+const { screenHeight, screenWidth } = CONST;
+
 class Parallax extends React.Component {
   constructor(props) {
     super(props);
@@ -29,16 +33,6 @@ class Parallax extends React.Component {
   }
 
   setOrigin() {
-    // For better browser support.
-    const screenWidth = window.innerWidth
-      || document.documentElement.clientWidth
-      || document.body.clientWidth;
-
-    // For better browser support.
-    const screenHeight = window.innerHeight
-      || document.documentElement.clientHeight
-      || document.body.clientHeight;
-
     this.setState({
       centerX: screenWidth / 2,
       centerY: screenHeight / 2,
@@ -56,15 +50,20 @@ class Parallax extends React.Component {
         clientX: mouseX,
         clientY: mouseY,
       } = e;
-      const amplitude = 1; // If change this, change also styles for ".parallax" .
+
+      const amplitude = 1; // If change this, change also styles for ".parallax-wrapper" .
       const stepX = centerX / amplitude;
       const stepY = centerY / amplitude;
-      bg.style.transform = `translate(${-1 * (((mouseX - centerX) / stepX) + amplitude)}%, ${-1 * (((mouseY - centerY) / stepY) + amplitude)}%)`;
+
+      const x = -1 * (((mouseX - centerX) / stepX) + amplitude);
+      const y = -1 * (((mouseY - centerY) / stepY) + amplitude);
+      bg.style.transform = `translate(${x}%, ${y}%)`;
     });
   }
 
   render() {
     const { children } = this.props;
+
     return (
       <div className="parallax-wrapper">
         <div

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import Layout from '../components/Layout';
+import SEO from '../components/Seo';
 import MainScreen from '../components/MainScreen';
 import Features from '../components/Features';
 import Footer from '../components/Footer';
@@ -9,10 +9,7 @@ import Footer from '../components/Footer';
 import 'normalize.css';
 import '../styles/main.scss';
 
-// TODO: Make face of women visible.
-// TODO: Animate sub-features rather than abrupt changes
-// TODO: Line-height in fixed heading
-// TODO: Fixed stuff takes a lot of space
+// TODO: Make PropTypes everywhere.
 
 const IndexPage = () => (
   <Layout>
