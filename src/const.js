@@ -1,11 +1,13 @@
 // For better browser support.
+const windowGlobal = typeof window !== 'undefined' && window;
+const documentGlobal = typeof document !== 'undefined' && document;
 export default {
   screenWidth:
-    (window !== 'undefined' && window.innerWidth)
-    || (document !== 'undefined' && document.documentElement.clientWidth)
-    || (document !== 'undefined' && document.body.clientWidth),
+    (windowGlobal !== 'undefined' && windowGlobal.innerWidth)
+    || (documentGlobal !== 'undefined' && documentGlobal.documentElement.clientWidth)
+    || (documentGlobal !== 'undefined' && documentGlobal.body.clientWidth),
   screenHeight:
-    (window !== 'undefined' && window.innerHeight)
-    || (document !== 'undefined' && document.documentElement.clientHeight)
-    || (document !== 'undefined' && document.body.clientHeight),
+    (windowGlobal !== 'undefined' && windowGlobal.innerHeight)
+    || (documentGlobal !== 'undefined' && documentGlobal.documentElement.clientHeight)
+    || (documentGlobal !== 'undefined' && documentGlobal.body.clientHeight),
 };
