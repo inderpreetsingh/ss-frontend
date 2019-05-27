@@ -2,6 +2,6 @@
 
 // For better browser support.
 export default {
-  screenWidth: window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth,
-  screenHeight: window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight,
+  screenWidth: (window && window.innerWidth) || (document && document.documentElement.clientWidth) || (document && document.body.clientWidth),
+  screenHeight: (window && window.innerHeight) || (document && document.documentElement.clientHeight) || (document && document.body.clientHeight),
 };
