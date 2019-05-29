@@ -29,11 +29,11 @@ class Background extends React.Component {
 
   render() {
     const { imagesLoaded } = this.state;
-    const { currentTheme } = this.props;
+    const { currentTheme, enableAnimations } = this.props;
 
     return (
       <div className={`bg-container ${imagesLoaded ? 'reveal' : 'hide'}`}>
-        <Parallax>
+        <Parallax active={enableAnimations}>
           <Fade when={currentTheme === 0}>
             <div>
               <img

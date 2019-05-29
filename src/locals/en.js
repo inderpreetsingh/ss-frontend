@@ -1,9 +1,7 @@
 module.exports = {
-  HEADER: {
-    LOGO: ['Skillshape,', 'your path revealed'],
-    MENU: 'menu',
-  },
+  LOGO: ['Skillshape,', 'your path revealed'],
   MAIN: {
+    MENU: 'menu',
     BACKGROUND_ALT: 'Background',
     HERO_TEXT: [
       'We help martial arts schools and gyms ', /* Location */ 'build a ', /* Stronger */ ' world.',

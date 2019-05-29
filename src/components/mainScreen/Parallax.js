@@ -17,19 +17,25 @@ class Parallax extends React.Component {
 
     this.moveBg = this.moveBg.bind(this);
     this.setOrigin = this.setOrigin.bind(this);
+    this.enableParallax = this.enableParallax.bind(this);
+    this.disableParallax = this.disableParallax.bind(this);
   }
 
   componentDidMount() {
     this.setOrigin();
-    window.addEventListener('load', this.setOrigin);
-    window.addEventListener('resize', this.setOrigin);
-    window.addEventListener('mousemove', this.moveBg);
+    this.enableParallax();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.active) {
+      this.enableParallax();
+    } else {
+      this.disableParallax();
+    }
   }
 
   componentWillUnmount() {
-    window.removeEventListener('load', this.setOrigin);
-    window.removeEventListener('resize', this.setOrigin);
-    window.removeEventListener('mousemove', this.moveBg);
+    this.disableParallax();
   }
 
   setOrigin() {
@@ -37,6 +43,18 @@ class Parallax extends React.Component {
       centerX: screenWidth / 2,
       centerY: screenHeight / 2,
     });
+  }
+
+  enableParallax() {
+    window.addEventListener('load', this.setOrigin);
+    window.addEventListener('resize', this.setOrigin);
+    window.addEventListener('mousemove', this.moveBg);
+  }
+
+  disableParallax() {
+    window.removeEventListener('load', this.setOrigin);
+    window.removeEventListener('resize', this.setOrigin);
+    window.removeEventListener('mousemove', this.moveBg);
   }
 
   moveBg(e) {

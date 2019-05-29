@@ -6,7 +6,9 @@ import { TEXT } from '../../locals';
 
 const { MAIN } = TEXT;
 
-export default ({ currentTheme, location, changeTheme }) => (
+export default ({
+  currentTheme, location, changeTheme, toggleRegistrationSidebar,
+}) => (
   <div className="main-text">
     <div className="lines disable-animations">
       <span
@@ -48,7 +50,7 @@ export default ({ currentTheme, location, changeTheme }) => (
       <button className="plain-btn">
         <h5>{MAIN.BTN_STUDENT}</h5>
       </button>
-      <button className="color-btn">
+      <button className="color-btn" onClick={toggleRegistrationSidebar}>
         <h5>{MAIN.BTN_SCHOOL}</h5>
       </button>
     </div>

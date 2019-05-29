@@ -7,7 +7,7 @@ const { screenHeight } = CONST;
 const { MAIN } = TEXT;
 
 
-export default ({ theme }) => {
+export default ({ theme, enableAnimations }) => {
   const goToNextScreen = () => {
     window.scrollTo({
       top: screenHeight + 1, // To make menu sticky.
@@ -16,7 +16,7 @@ export default ({ theme }) => {
   };
 
   return (
-    <div className="learn-more-block">
+    <div className={`learn-more-block ${enableAnimations ? '' : 'disable'}`}>
       <button
         className={theme.color}
         onClick={goToNextScreen}
