@@ -1,51 +1,65 @@
-/* eslint-disable */
-
-// TODO: Fix eslint issues.
-
+/* eslint-disable jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 import React from 'react';
+import { Link } from 'gatsby';
 
 import Sidebar from './Sidebar';
 import Checkbox from '../Checkbox';
+import { TEXT } from '../../locals';
+
+const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
 export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
   <Sidebar
     active={active}
     toggleShow={toggleRegistrationSidebar}
   >
-    <h2 className="title">Sign up for Skillshape</h2>
+    <h2 className="title">{SIGN_UP_SIDEBAR.TITLE}</h2>
     <div className="info">
       <label htmlFor="email">
-        <p>Email</p>
-        <input id="email" type="email" placeholder="email@example.com" />
+        <p>{SIGN_UP_SIDEBAR.INPUT.EMAIL}</p>
+        <input
+          id="email"
+          type="email"
+          placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.EMAIL}
+        />
       </label>
       <label htmlFor="password">
-        <p>Password</p>
-        <input id="password" type="password" placeholder="******" />
+        <p>{SIGN_UP_SIDEBAR.INPUT.PASSWORD}</p>
+        <input
+          id="password"
+          type="password"
+          placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.PASSWORD}
+        />
       </label>
       <label htmlFor="confirm_password">
-        <p>Confirm password</p>
-        <input id="confirm_password" type="password" placeholder="******" />
+        <p>{SIGN_UP_SIDEBAR.INPUT.CONFIRM_PASSWORD}</p>
+        <input
+          id="confirm_password"
+          type="password"
+          placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.CONFIRM_PASSWORD}
+        />
       </label>
       <label
         htmlFor="terms"
         className="label-with-checkbox"
       >
         <Checkbox id="terms" />
-        I agree to Skillshape&nbsp;
-        <a href="#"> terms & conditions </a>
-        .
+        <div>
+          {SIGN_UP_SIDEBAR.CHECKBOX.TERMS[0]}
+          <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>.
+        </div>
       </label>
       <label
         htmlFor="news"
         className="label-with-checkbox"
       >
         <Checkbox id="news" />
-        I would like to receive news and updates about Skillshape.
+        {SIGN_UP_SIDEBAR.CHECKBOX.NEWS}
       </label>
     </div>
     <div className="bottom">
       <button className="main-btn">
-        <h5> Sign Up </h5>
+        <h5> {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON} </h5>
       </button>
       <button
         className="transparent-btn"
@@ -54,7 +68,7 @@ export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
           toggleLoginSidebar();
         }}
       >
-        I already have an account, log in.
+        {SIGN_UP_SIDEBAR.SIGN_IN_BUTTON}
       </button>
     </div>
   </Sidebar>

@@ -13,8 +13,6 @@ import RegistrationSidebar from './mainScreen/RegistrationSidebar';
 
 const { LOGIN, REGISTRATION } = CONST.SIDEBAR_MODE;
 
-// TODO: Remove pointer events from menu.
-
 class MainScreen extends React.Component {
   constructor(props) {
     super(props);

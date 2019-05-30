@@ -1,7 +1,9 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
 
-// TODO: Rewrite img alt to locals.
+import { TEXT } from '../../locals';
+
+const { IMAGES_ALT } = TEXT.MAIN;
 
 class InfoBlock extends React.Component {
   constructor(props) {
@@ -46,7 +48,7 @@ class InfoBlock extends React.Component {
               options.map(({ img }, i) => (
                 <Fade key={img} when={active === i}>
                   <div className="image-wrapper">
-                    <img src={img} alt="Option" />
+                    <img src={img} alt={IMAGES_ALT.OPTION} />
                   </div>
                 </Fade>
               ))

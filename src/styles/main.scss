@@ -1014,12 +1014,21 @@ input[type=checkbox] {
   top: 0;
   bottom: 0;
   transition: 0.3s;
-  width: 33.333vw;
   left: 0;
+  overflow: hidden;
   padding: 2.5rem;
+  width: 100vw;
 
   &.hidden {
-    left: -33.333vw;
+    left: -100vw;
+  }
+
+  @media (min-width: 768px) {
+    width: 35vw;
+
+    &.hidden {
+      left: -35vw;
+    }
   }
 
   .top {
@@ -1041,6 +1050,10 @@ input[type=checkbox] {
 
     .content {
       width: 100%;
+      max-width: 400px;
+      @media (min-width: 768px) {
+        max-width: none;
+      }
 
       .title {
         font-weight: $thin;
@@ -1049,9 +1062,11 @@ input[type=checkbox] {
 
       .info {
         margin-bottom: 1.5rem;
+
         label {
           font-family: 'Oswald', sans-serif;
           user-select: none;
+
           &.label-with-checkbox {
             display: flex;
             align-items: center;
@@ -1066,6 +1081,10 @@ input[type=checkbox] {
               font-weight: $bold;
               text-decoration: none;
               font-family: 'Oswald', sans-serif;
+
+              &:hover {
+                text-decoration: underline;
+              }
             }
           }
 
@@ -1076,13 +1095,17 @@ input[type=checkbox] {
 
           input {
             width: 100%;
-            border: 2px solid #fff;
+            border: 2px solid rgba(225, 225, 225, .75);
             background: transparent;
             color: #fff;
             font-family: 'Oswald', sans-serif;
             height: 3.5rem;
             padding: 1rem;
             margin-bottom: 1rem;
+
+            &:hover, &:focus, &:active {
+              border-color: rgba(225, 225, 225, 1);
+            }
           }
         }
       }
@@ -1103,6 +1126,7 @@ input[type=checkbox] {
             letter-spacing: 1px;
             background: $blue;
             margin-bottom: 1rem;
+
             &:hover {
               background: $darken-blue;
             }
