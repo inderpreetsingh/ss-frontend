@@ -1015,9 +1015,11 @@ input[type=checkbox] {
   bottom: 0;
   transition: 0.3s;
   left: 0;
-  overflow: hidden;
+  overflow-x: hidden;
   padding: 2.5rem;
   width: 100vw;
+  display: flex;
+  flex-direction: column;
 
   &.hidden {
     left: -100vw;
@@ -1034,6 +1036,7 @@ input[type=checkbox] {
   .top {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 2.5rem;
 
     .go-back-arr {
       background: transparent;
@@ -1043,7 +1046,7 @@ input[type=checkbox] {
   }
 
   .sidebar-wrapper {
-    height: 100%;
+    flex-grow: 1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1118,6 +1121,7 @@ input[type=checkbox] {
         button {
           color: #fff;
           font-family: 'Oswald', sans-serif;
+          margin-bottom: 1rem;
 
           &.main-btn {
             padding: 1rem;
@@ -1125,7 +1129,6 @@ input[type=checkbox] {
             text-transform: uppercase;
             letter-spacing: 1px;
             background: $blue;
-            margin-bottom: 1rem;
 
             &:hover {
               background: $darken-blue;

@@ -2,8 +2,13 @@ import React from 'react';
 
 import Logo from '../Logo';
 
-export default ({ children, active, toggleShow }) => (
-  <div className={`sidebar ${active ? '' : 'hidden'}`}>
+export default ({
+  forwardRef, children, active, toggleShow,
+}) => (
+  <div
+    ref={forwardRef}
+    className={`sidebar ${active ? '' : 'hidden'}`}
+  >
     <div className="top">
       <Logo />
       <button

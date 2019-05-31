@@ -8,8 +8,11 @@ import { TEXT } from '../../locals';
 
 const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
-export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
+export default ({
+  forwardRef, active, toggleLoginSidebar, toggleRegistrationSidebar,
+}) => (
   <Sidebar
+    forwardRef={forwardRef}
     active={active}
     toggleShow={toggleRegistrationSidebar}
   >

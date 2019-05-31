@@ -5,8 +5,11 @@ import { TEXT } from '../../locals';
 
 const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
 
-export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
+export default ({
+  forwardRef, active, toggleLoginSidebar, toggleRegistrationSidebar,
+}) => (
   <Sidebar
+    forwardRef={forwardRef}
     active={active}
     toggleShow={toggleLoginSidebar}
   >
