@@ -6,20 +6,19 @@ import React from 'react';
 const Checkbox = ({
   children, className, name, id, ...rest
 }) => {
-  const newId = typeof id === 'undefined' ? name : id;
   return (
     <label
-      htmlFor={newId}
+      htmlFor={id}
       className={`checkbox ${className}`}
     >
       <input
         type="checkbox"
-        id={newId}
+        id={id}
         name={name}
         {...rest}
       />
       <label
-        htmlFor={newId}
+        htmlFor={id}
         className="cursor-pointer"
       />
     </label>

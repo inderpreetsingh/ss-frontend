@@ -1,25 +1,41 @@
 import React from 'react';
 
 import Sidebar from './Sidebar';
+import { TEXT } from '../../locals';
 
-export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
+const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
+
+export default ({
+  forwardRef, active, toggleLoginSidebar, toggleRegistrationSidebar,
+}) => (
   <Sidebar
+    forwardRef={forwardRef}
     active={active}
     toggleShow={toggleLoginSidebar}
   >
-    <h2 className="title">Log in for Skillshape</h2>
+    <h2 className="title">{SIGN_IN_SIDEBAR.TITLE}</h2>
     <div className="info">
       <label htmlFor="email">
-        <p>Email</p>
-        <input id="email" type="email" placeholder="email@example.com" />
+        <p>{SIGN_IN_SIDEBAR.INPUT.EMAIL}</p>
+        <input
+          id="email"
+          type="email"
+          placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.EMAIL}
+        />
       </label>
       <label htmlFor="password">
-        <p>Password</p>
-        <input id="password" type="password" placeholder="******" />
+        <p>{SIGN_IN_SIDEBAR.INPUT.PASSWORD}</p>
+        <input
+          id="password"
+          type="password"
+          placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.PASSWORD}
+        />
       </label>
     </div>
     <div className="bottom">
-      <button className="main-btn"> Log In </button>
+      <button className="main-btn">
+        <h5>{SIGN_IN_SIDEBAR.SIGN_IN_BUTTON}</h5>
+      </button>
       <button
         className="transparent-btn"
         onClick={() => {
@@ -27,7 +43,7 @@ export default ({ active, toggleLoginSidebar, toggleRegistrationSidebar }) => (
           toggleRegistrationSidebar();
         }}
       >
-        I don't have an account, register.
+        {SIGN_IN_SIDEBAR.SIGN_UP_BUTTON}
       </button>
     </div>
   </Sidebar>

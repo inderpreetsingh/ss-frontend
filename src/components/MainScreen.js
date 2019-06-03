@@ -13,8 +13,6 @@ import RegistrationSidebar from './mainScreen/RegistrationSidebar';
 
 const { LOGIN, REGISTRATION } = CONST.SIDEBAR_MODE;
 
-// TODO: Remove pointer events from menu.
-
 class MainScreen extends React.Component {
   constructor(props) {
     super(props);
@@ -26,6 +24,9 @@ class MainScreen extends React.Component {
     };
 
     this.counter = null;
+
+    this.sidebarLogin = React.createRef();
+    this.sidebarRegistration = React.createRef();
 
     this.count = this.count.bind(this);
     this.changeTheme = this.changeTheme.bind(this);
@@ -67,11 +68,12 @@ class MainScreen extends React.Component {
     }), () => {
       const { [`show${mode}Sidebar`]: show } = this.state;
 
+      console.log(`sidebar${mode}}`, this[`sidebar${mode}`]);
       if (show) {
-        disableBodyScroll(null, { reserveScrollBarGap: true });
+        disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
         clearInterval(this.counter);
       } else {
-        enableBodyScroll(null, { reserveScrollBarGap: true });
+        enableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
         this.counter = setInterval(this.count, 10000);
       }
     });
@@ -87,11 +89,13 @@ class MainScreen extends React.Component {
     return (
       <>
         <LoginSidebar
+          forwardRef={this.sidebarLogin}
           active={showLoginSidebar}
           toggleLoginSidebar={toggleLoginSidebar}
           toggleRegistrationSidebar={toggleRegistrationSidebar}
         />
         <RegistrationSidebar
+          forwardRef={this.sidebarRegistration}
           active={showRegistrationSidebar}
           toggleLoginSidebar={toggleLoginSidebar}
           toggleRegistrationSidebar={toggleRegistrationSidebar}
