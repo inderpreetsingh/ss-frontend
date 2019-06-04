@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,500,700|Zilla+Slab:300,300i,500,700');
 
+// TODO: Split this file.
+
 // Constants
 $grey: #4b4a4a;
 $darken-grey: #323232;
@@ -130,6 +132,13 @@ h6, p {
   color: #fff;
   padding: 2.5rem;
   z-index: 1;
+}
+
+input {
+  outline: none;
+  &:active, &:focus, &:hover {
+    outline: none;
+  }
 }
 
 // Hide default checkbox
@@ -620,6 +629,7 @@ input[type=checkbox] {
           font-family: 'Oswald', sans-serif;
           font-weight: $thin;
           cursor: pointer;
+          white-space: nowrap;
         }
       }
     }
@@ -912,10 +922,7 @@ input[type=checkbox] {
         .slider {
           width: 100%;
           height: 27.5rem;
-          background: #9dc263;
-          border-radius: 2rem;
           position: relative;
-          overflow: hidden;
           @media (min-width: 1220px) {
             width: 90%;
             margin: auto;
@@ -931,6 +938,8 @@ input[type=checkbox] {
             img {
               height: 100%;
               width: 100%;
+              border-radius: 2rem;
+              object-fit: cover;
             }
           }
         }

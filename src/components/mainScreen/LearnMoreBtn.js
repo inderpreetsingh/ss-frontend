@@ -1,16 +1,13 @@
 import React from 'react';
 
-import CONST from '../../const';
 import { TEXT } from '../../locals';
 
-const { screenHeight } = CONST;
 const { MAIN } = TEXT;
 
-
-export default ({ theme, enableAnimations }) => {
+export default ({ theme, enableAnimations, mainScreen }) => {
   const goToNextScreen = () => {
     window.scrollTo({
-      top: screenHeight + 1, // To make menu sticky.
+      top: mainScreen.current.clientHeight + 1, // +1 To make menu sticky.
       behavior: 'smooth',
     });
   };

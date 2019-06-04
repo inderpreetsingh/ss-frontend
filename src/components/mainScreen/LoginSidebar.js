@@ -15,10 +15,10 @@ export default ({
   >
     <h2 className="title">{SIGN_IN_SIDEBAR.TITLE}</h2>
     <div className="info">
-      <label htmlFor="email">
+      <label htmlFor="login_email">
         <p>{SIGN_IN_SIDEBAR.INPUT.EMAIL}</p>
         <input
-          id="email"
+          id="login_email"
           type="email"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.EMAIL}
         />

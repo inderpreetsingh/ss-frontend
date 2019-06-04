@@ -1,6 +1,7 @@
 module.exports = {
   LOGO: ['Skillshape,', 'your path revealed'],
   MAIN: {
+    SEO_TITLE: 'Skillshape Landing Page',
     // First screen
     MENU: 'menu',
     BACKGROUND_ALT: 'Background',

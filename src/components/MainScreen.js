@@ -25,6 +25,7 @@ class MainScreen extends React.Component {
 
     this.counter = null;
 
+    this.mainScreen = React.createRef();
     this.sidebarLogin = React.createRef();
     this.sidebarRegistration = React.createRef();
 
@@ -68,7 +69,6 @@ class MainScreen extends React.Component {
     }), () => {
       const { [`show${mode}Sidebar`]: show } = this.state;
 
-      console.log(`sidebar${mode}}`, this[`sidebar${mode}`]);
       if (show) {
         disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
         clearInterval(this.counter);
@@ -101,7 +101,7 @@ class MainScreen extends React.Component {
           toggleRegistrationSidebar={toggleRegistrationSidebar}
         />
 
-        <section className="main-screen">
+        <section className="main-screen" ref={this.mainScreen}>
           <Menu active={enableAnimations} />
           <Background
             currentTheme={currentTheme}
@@ -114,6 +114,7 @@ class MainScreen extends React.Component {
             toggleRegistrationSidebar={toggleRegistrationSidebar}
           />
           <LearnMoreBtn
+            mainScreen={this.mainScreen}
             theme={themes[currentTheme]}
             enableAnimations={enableAnimations}
           />

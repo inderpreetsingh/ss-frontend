@@ -18,10 +18,10 @@ export default ({
   >
     <h2 className="title">{SIGN_UP_SIDEBAR.TITLE}</h2>
     <div className="info">
-      <label htmlFor="email">
+      <label htmlFor="registration_email">
         <p>{SIGN_UP_SIDEBAR.INPUT.EMAIL}</p>
         <input
-          id="email"
+          id="registration_email"
           type="email"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.EMAIL}
         />
