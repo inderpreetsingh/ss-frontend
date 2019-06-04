@@ -1,5 +1,4 @@
 import React from 'react';
-import smoothscroll from 'smoothscroll-polyfill';
 
 import Layout from '../components/Layout';
 import SEO from '../components/Seo';
@@ -14,10 +13,6 @@ import '../styles/main.scss';
 const { MAIN } = TEXT;
 
 // TODO: Make PropTypes everywhere.
-// TODO: Enable smooth scroll for all pages, not only for this one.
-
-// Make smooth scroll for Edge and Safari.
-smoothscroll.polyfill();
 
 const IndexPage = () => (
   <Layout>

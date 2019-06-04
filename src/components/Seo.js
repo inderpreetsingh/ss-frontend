@@ -29,6 +29,11 @@ function Seo({
       title={title}
       titleTemplate={`%s | ${site.siteMetadata.title}`}
       meta={[
+        // To disable viewport zooming on Mobile Safari.
+        {
+          name: 'viewport',
+          content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no',
+        },
         {
           name: 'description',
           content: metaDescription,

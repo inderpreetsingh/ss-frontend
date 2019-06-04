@@ -23,10 +23,10 @@ export default ({
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
-      <label htmlFor="password">
+      <label htmlFor="login_password">
         <p>{SIGN_IN_SIDEBAR.INPUT.PASSWORD}</p>
         <input
-          id="password"
+          id="login_password"
           type="password"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.PASSWORD}
         />

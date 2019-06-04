@@ -1139,6 +1139,10 @@ input[type=checkbox] {
             letter-spacing: 1px;
             background: $blue;
 
+            h5 {
+              font-family: 'Oswald', sans-serif;
+            }
+
             &:hover {
               background: $darken-blue;
             }

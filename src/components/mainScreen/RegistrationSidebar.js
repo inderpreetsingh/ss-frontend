@@ -26,10 +26,10 @@ export default ({
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
-      <label htmlFor="password">
+      <label htmlFor="registration_password">
         <p>{SIGN_UP_SIDEBAR.INPUT.PASSWORD}</p>
         <input
-          id="password"
+          id="registration_password"
           type="password"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.PASSWORD}
         />
