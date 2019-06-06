@@ -23,6 +23,7 @@ export default ({
         <input
           id="registration_email"
           type="email"
+          className="inputEmail"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
@@ -31,6 +32,7 @@ export default ({
         <input
           id="registration_password"
           type="password"
+          className="inputPassword"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.PASSWORD}
         />
       </label>
@@ -39,6 +41,7 @@ export default ({
         <input
           id="confirm_password"
           type="password"
+          className="inputPassword"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.CONFIRM_PASSWORD}
         />
       </label>

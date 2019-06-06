@@ -7,9 +7,9 @@ import { TEXT } from '../../locals';
 const { MAIN } = TEXT;
 
 export default ({
-  currentTheme, location, changeTheme, toggleRegistrationSidebar,
+  currentTheme, location, changeTheme, toggleRegistrationSidebar, showHeroText,
 }) => (
-  <div className="main-text">
+  <div className={`main-text ${showHeroText ? '' : 'hidden'}`}>
     <div className="lines disable-animations">
       <span
         className={`red ${currentTheme === 0 && 'active'}`}

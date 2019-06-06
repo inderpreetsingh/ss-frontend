@@ -20,6 +20,7 @@ export default ({
         <input
           id="login_email"
           type="email"
+          className="inputEmail"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
@@ -28,6 +29,7 @@ export default ({
         <input
           id="login_password"
           type="password"
+          className="inputPassword"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.PASSWORD}
         />
       </label>

@@ -82,6 +82,7 @@ class MainScreen extends React.Component {
   render() {
     const { currentTheme, showRegistrationSidebar, showLoginSidebar } = this.state;
     const enableAnimations = !showRegistrationSidebar && !showLoginSidebar;
+    const showHeroText = enableAnimations;
 
     const toggleLoginSidebar = () => this.toggleSidebar(LOGIN);
     const toggleRegistrationSidebar = () => this.toggleSidebar(REGISTRATION);
@@ -111,6 +112,7 @@ class MainScreen extends React.Component {
             currentTheme={currentTheme}
             changeTheme={this.changeTheme}
             toggleLoginSidebar={toggleLoginSidebar}
+            showHeroText={showHeroText}
             toggleRegistrationSidebar={toggleRegistrationSidebar}
           />
           <LearnMoreBtn
