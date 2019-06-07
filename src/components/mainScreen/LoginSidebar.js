@@ -6,11 +6,10 @@ import { TEXT } from '../../locals';
 const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
 
 export default ({
-  forwardRef, active, toggleLoginSidebar, toggleRegistrationSidebar,
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
 }) => (
   <Sidebar
     forwardRef={forwardRef}
-    active={active}
     toggleShow={toggleLoginSidebar}
   >
     <h2 className="title">{SIGN_IN_SIDEBAR.TITLE}</h2>
@@ -20,7 +19,7 @@ export default ({
         <input
           id="login_email"
           type="email"
-          className="inputEmail"
+          className="email"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
@@ -29,7 +28,7 @@ export default ({
         <input
           id="login_password"
           type="password"
-          className="inputPassword"
+          className="password"
           placeholder={SIGN_IN_SIDEBAR.PLACEHOLDER.PASSWORD}
         />
       </label>
