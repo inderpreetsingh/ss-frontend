@@ -653,11 +653,11 @@ input[type=checkbox] {
         width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
         max-width: 100%;
         @media (min-width: 768px) {
-          width: 85vw;
+          width: 75vw;
           padding: 1.25rem 0;
         }
         @media (min-width: 1024px) {
-          width: 75vw;
+          width: 65vw;
         }
 
         .line {
@@ -688,11 +688,11 @@ input[type=checkbox] {
             width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
             padding: 0 1.25rem;
             @media (min-width: 768px) {
-              width: 85vw;
+              width: 75vw;
               padding: 0;
             }
             @media (min-width: 1024px) {
-              width: 75vw;
+              width: 65vw;
             }
 
             .line {
