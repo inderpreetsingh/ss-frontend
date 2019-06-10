@@ -1,10 +1,11 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import { TEXT } from '../../locals';
 
 const { MAIN } = TEXT;
 
-export default ({ theme, enableAnimations, mainScreen }) => {
+const LearnMoreBtn = ({ theme, enableAnimations, mainScreen }) => {
   const goToNextScreen = () => {
     window.scrollTo({
       top: mainScreen.current.clientHeight + 1, // +1 To make menu sticky.
@@ -28,3 +29,11 @@ export default ({ theme, enableAnimations, mainScreen }) => {
     </div>
   );
 };
+
+LearnMoreBtn.propTypes = {
+  theme: PropTypes.instanceOf(Object).isRequired,
+  enableAnimations: PropTypes.bool.isRequired,
+  mainScreen: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default LearnMoreBtn;

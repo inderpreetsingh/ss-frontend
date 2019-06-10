@@ -1,13 +1,13 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 import Sidebar from './Sidebar';
 import { TEXT } from '../../locals';
 
 const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
 
-export default ({
-  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
-}) => (
+
+const LoginSidebar = ({ forwardRef, toggleLoginSidebar, toggleRegistrationSidebar }) => (
   <Sidebar
     forwardRef={forwardRef}
     toggleShow={toggleLoginSidebar}
@@ -49,3 +49,9 @@ export default ({
     </div>
   </Sidebar>
 );
+LoginSidebar.propTypes = {
+  forwardRef: PropTypes.instanceOf(Object).isRequired,
+  toggleLoginSidebar: PropTypes.func.isRequired,
+  toggleRegistrationSidebar: PropTypes.func.isRequired,
+};
+export default LoginSidebar;

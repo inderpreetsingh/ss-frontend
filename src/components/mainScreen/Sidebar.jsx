@@ -1,8 +1,9 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import PropTypes from 'prop-types';
 import Logo from '../Logo';
 
-export default ({
+const Sidebar = ({
   forwardRef, children, toggleShow,
 }) => (
   <Fade>
@@ -19,3 +20,10 @@ export default ({
     </div>
   </Fade>
 );
+Sidebar.propTypes = {
+  toggleShow: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
+  forwardRef: PropTypes.instanceOf(Object).isRequired,
+
+};
+export default Sidebar;

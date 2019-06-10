@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import Sidebar from './Sidebar';
 import Checkbox from '../Checkbox';
@@ -8,7 +9,8 @@ import { TEXT } from '../../locals';
 
 const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
-export default ({
+
+const RegistrationSidebar = ({
   forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
 }) => (
   <Sidebar
@@ -78,3 +80,10 @@ export default ({
     </div>
   </Sidebar>
 );
+RegistrationSidebar.propTypes = {
+  toggleLoginSidebar: PropTypes.func.isRequired,
+  toggleRegistrationSidebar: PropTypes.func.isRequired,
+  forwardRef: PropTypes.instanceOf(Object).isRequired,
+
+};
+export default RegistrationSidebar;
