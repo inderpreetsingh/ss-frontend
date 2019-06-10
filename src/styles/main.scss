@@ -80,6 +80,11 @@ h1 {
 h2 {
   font-size: 2.25rem;
   line-height: 2.25rem;
+
+  &.smallerH2 {
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+  }
 }
 
 h3 {
@@ -335,7 +340,8 @@ input[type=checkbox] {
     color: #fff;
     padding: 2.5rem;
     visibility: visible;
-
+    width: 100%;
+    
     &.hidden {
       visibility: hidden;
     }
