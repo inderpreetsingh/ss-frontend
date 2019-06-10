@@ -60,10 +60,13 @@ const HeroText = ({
 );
 HeroText.propTypes = {
   currentTheme: PropTypes.number.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.string,
   changeTheme: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
   showHeroText: PropTypes.bool.isRequired,
 };
 
+HeroText.defaultProps = {
+  location: '',
+};
 export default HeroText;
