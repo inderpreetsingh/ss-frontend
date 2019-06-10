@@ -11,10 +11,11 @@ const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
 
 const RegistrationSidebar = ({
-  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar, active,
 }) => (
   <Sidebar
     forwardRef={forwardRef}
+    active={active}
     toggleShow={toggleRegistrationSidebar}
   >
     <h2 className="title">{SIGN_UP_SIDEBAR.TITLE}</h2>
@@ -84,6 +85,7 @@ RegistrationSidebar.propTypes = {
   toggleLoginSidebar: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
   forwardRef: PropTypes.instanceOf(Object).isRequired,
+  active: PropTypes.bool.isRequired,
 
 };
 export default RegistrationSidebar;

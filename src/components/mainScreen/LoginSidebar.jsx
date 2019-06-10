@@ -7,10 +7,13 @@ import { TEXT } from '../../locals';
 const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
 
 
-const LoginSidebar = ({ forwardRef, toggleLoginSidebar, toggleRegistrationSidebar }) => (
+const LoginSidebar = ({
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar, active,
+}) => (
   <Sidebar
     forwardRef={forwardRef}
     toggleShow={toggleLoginSidebar}
+    active={active}
   >
     <h2 className="title">{SIGN_IN_SIDEBAR.TITLE}</h2>
     <div className="info">
@@ -53,5 +56,7 @@ LoginSidebar.propTypes = {
   forwardRef: PropTypes.instanceOf(Object).isRequired,
   toggleLoginSidebar: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+
 };
 export default LoginSidebar;

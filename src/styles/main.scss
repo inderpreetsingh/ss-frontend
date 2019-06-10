@@ -1033,9 +1033,22 @@ input[type=checkbox] {
   width: 100vw;
   display: flex;
   flex-direction: column;
+  visibility: visible;
+  opacity: 1;
+  transition: visibility 0.3s, opacity 0.3s ease-in;
+
+  &.hidden {
+    visibility: hidden;
+    opacity: 0;
+  }
 
   @media (min-width: 768px) {
     width: 35vw;
+
+    &.hidden {
+      visibility: hidden;
+      opacity: 0;
+    }
   }
 
   .top {

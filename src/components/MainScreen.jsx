@@ -91,20 +91,18 @@ class MainScreen extends React.Component {
 
     return (
       <>
-        {showLoginSidebar && (
-          <LoginSidebar
-            forwardRef={this.sidebarLogin}
-            toggleLoginSidebar={toggleLoginSidebar}
-            toggleRegistrationSidebar={toggleRegistrationSidebar}
-          />
-        )}
-        {showRegistrationSidebar && (
-          <RegistrationSidebar
-            forwardRef={this.sidebarRegistration}
-            toggleLoginSidebar={toggleLoginSidebar}
-            toggleRegistrationSidebar={toggleRegistrationSidebar}
-          />
-        )}
+        <LoginSidebar
+          active={showLoginSidebar}
+          forwardRef={this.sidebarLogin}
+          toggleLoginSidebar={toggleLoginSidebar}
+          toggleRegistrationSidebar={toggleRegistrationSidebar}
+        />
+        <RegistrationSidebar
+          active={showRegistrationSidebar}
+          forwardRef={this.sidebarRegistration}
+          toggleLoginSidebar={toggleLoginSidebar}
+          toggleRegistrationSidebar={toggleRegistrationSidebar}
+        />
 
         <section className="main-screen" ref={this.mainScreen}>
           <Menu active={enableAnimations} />

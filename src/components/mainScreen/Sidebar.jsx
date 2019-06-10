@@ -4,10 +4,10 @@ import PropTypes from 'prop-types';
 import Logo from '../Logo';
 
 const Sidebar = ({
-  forwardRef, children, toggleShow,
+  forwardRef, children, toggleShow, active,
 }) => (
-  <Fade>
-    <div ref={forwardRef} className="sidebar">
+  <Fade when={active} opposite={!active}>
+    <div ref={forwardRef} className={`sidebar ${active ? '' : 'hidden'}`}>
       <div className="top">
         <Logo />
         <button className="go-back-arr" onClick={toggleShow}>
@@ -24,6 +24,7 @@ Sidebar.propTypes = {
   toggleShow: PropTypes.func.isRequired,
   children: PropTypes.node.isRequired,
   forwardRef: PropTypes.instanceOf(Object).isRequired,
+  active: PropTypes.bool.isRequired,
 
 };
 export default Sidebar;
