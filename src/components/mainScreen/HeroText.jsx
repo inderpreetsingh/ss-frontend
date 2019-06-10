@@ -37,7 +37,7 @@ const HeroText = ({
                 <span className={color}>{text.make}</span>
                 {MAIN.HERO_TEXT[2]}
               </h1>
-              <h2 className="smallerH2">{MAIN.HERO_TEXT[3]}</h2>
+              <h3>{MAIN.HERO_TEXT[3]}</h3>
             </div>
           </Fade>
         ))}
