@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import themes from './themes';
 import { TEXT } from '../../locals';
+import '../../styles/herotext.scss';
 
 const { MAIN } = TEXT;
 

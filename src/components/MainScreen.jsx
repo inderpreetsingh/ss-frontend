@@ -10,6 +10,7 @@ import Background from './mainScreen/Background';
 import LearnMoreBtn from './mainScreen/LearnMoreBtn';
 import LoginSidebar from './mainScreen/LoginSidebar';
 import RegistrationSidebar from './mainScreen/RegistrationSidebar';
+import '../styles/mainscreen.scss';
 
 const { LOGIN, REGISTRATION } = CONST.SIDEBAR_MODE;
 

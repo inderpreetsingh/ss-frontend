@@ -2,6 +2,7 @@ import React from 'react';
 import Fade from 'react-reveal/Fade';
 import PropTypes from 'prop-types';
 import Logo from '../Logo';
+import '../../styles/sidebar.scss';
 
 const Sidebar = ({
   forwardRef, children, toggleShow, active,

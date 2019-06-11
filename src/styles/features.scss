@@ -1,0 +1,369 @@
+@import "./consts.scss";
+
+//Second Screen
+.features {
+    .top {
+      .steps {
+        background: $darken-grey;
+        color: #fff;
+  
+        ol {
+          display: flex;
+          justify-content: space-between;
+          margin: auto;
+          padding: 0 2.5rem;
+          width: 100%;
+          @media (min-width: 768px) {
+            width: 85%;
+            padding: 0;
+          }
+          @media (min-width: 1024px) {
+            width: 75%;
+          }
+  
+          li {
+            margin-left: 1.5rem; // To count also space of index number when center.
+            padding: 0.75rem 0;
+            font-size: 1.5rem;
+            line-height: 1.75rem;
+            font-family: 'Oswald', sans-serif;
+            font-weight: $thin;
+            cursor: pointer;
+            white-space: nowrap;
+          }
+        }
+      }
+  
+      .progress-bar-wrapper {
+        background: #fff;
+        transition: 0.3s;
+  
+        .progress-bar {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          padding: 1.25rem;
+          margin: auto;
+          position: relative;
+          width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
+          max-width: 100%;
+          @media (min-width: 768px) {
+            width: 85vw;
+            padding: 1.25rem 0;
+          }
+          @media (min-width: 1024px) {
+            width: 75vw;
+          }
+  
+          .line {
+            width: 100%;
+            height: 0.2rem;
+            background-color: $lighten-grey;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+  
+            .point {
+              width: 1.5rem;
+              height: 1.5rem;
+              border-radius: 50%;
+              background-color: inherit;
+            }
+          }
+  
+          .filling-wrapper {
+            position: absolute;
+            padding: 0.75rem 0;
+            left: 0;
+            overflow: hidden;
+            width: 0;
+            transition: 0.2s;
+  
+            .filling {
+              width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
+              padding: 0 1.25rem;
+              @media (min-width: 768px) {
+                width: 85vw;
+                padding: 0;
+              }
+              @media (min-width: 1024px) {
+                width: 75vw;
+              }
+  
+              .line {
+                background-color: $blue;
+              }
+  
+              .point {
+                color: #fff;
+                @media (min-width: 768px) {
+                  color: transparent;
+                }
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-family: 'Oswald', sans-serif;
+              }
+            }
+          }
+        }
+      }
+    }
+  
+    .sticky {
+      .progress-bar-wrapper {
+        top: 0;
+        width: 100%;
+        z-index: 2;
+        position: fixed;
+        background: $darken-grey;
+      }
+  
+      @media (min-width: 768px) {
+        top: 0;
+        width: 100%;
+        z-index: 2;
+        position: fixed;
+        .progress-bar-wrapper {
+          position: initial;
+        }
+      }
+    }
+  
+    .sticky + .content {
+      padding-top: 12.75rem;
+      @media (min-width: 768px) {
+        padding-top: 16.5rem;
+      }
+    }
+  
+    .content {
+      padding: 10rem 2.5rem 12.5rem;
+      overflow: hidden;
+  
+      .info-block {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+        height: auto;
+        padding: 0;
+        margin-bottom: 10rem;
+        @media (min-width: 1220px) {
+          height: 27.5rem;
+          align-items: initial;
+        }
+        @media (min-width: 1440px) {
+          padding: 0 2.5rem;
+        }
+  
+        &:nth-child(2) {
+          @media (min-width: 1220px) {
+            margin-bottom: 20rem;
+          }
+        }
+  
+        &:nth-last-child(1) {
+          margin-bottom: 0;
+        }
+  
+        // To reverse the blocks.
+        &:nth-child(2n) {
+          .text-wrapper {
+            margin-left: auto;
+          }
+  
+          .slider-wrapper {
+            left: 0;
+          }
+  
+          .bg-icon-wrapper {
+            @media (min-width: 1220px) {
+              left: -7.5rem;
+            }
+          }
+        }
+  
+        .text-wrapper {
+          width: 100%;
+          @media (min-width: 1220px) {
+            width: 50%;
+          }
+  
+          .text {
+            margin: auto;
+            width: 100%;
+            @media (min-width: 1440px) {
+              width: 90%;
+            }
+  
+            &.description {
+              margin-bottom: 1.5rem;
+              position: relative;
+  
+              span {
+                position: absolute;
+                font-size: 17.5rem;
+                font-family: 'Oswald', sans-serif;
+                left: -2.5rem;
+                top: -2.5rem;
+                color: $red;
+                z-index: -1;
+                opacity: .05;
+              }
+  
+              h1 {
+                margin-bottom: 1.5rem;
+                font-weight: $thin;
+              }
+  
+              h4 {
+                font-weight: $thin;
+                color: $grey;
+              }
+            }
+  
+            &.options {
+              ul {
+                list-style: none;
+  
+                li {
+                  margin-bottom: 1.5rem;
+                  cursor: pointer;
+                  @media (min-width: 768px) {
+                    width: 80%;
+                  }
+  
+                  &:nth-last-child(1) {
+                    margin-bottom: 0;
+                  }
+  
+                  .title {
+                    display: flex;
+                    align-items: center;
+  
+                    h4 {
+                      font-family: 'Oswald', sans-serif;
+                      font-weight: $thin;
+                      margin-bottom: 0.5rem;
+                      color: $grey;
+                    }
+  
+                    svg {
+                      margin-right: 0.5rem;
+                      width: 2.5rem;
+                      height: 2.5rem;
+                    }
+                  }
+  
+                  .description-wrapper {
+                    position: relative;
+                    padding-left: 3rem;
+                    height: 0;
+                    overflow: hidden;
+                    transition: 0.3s;
+  
+                    p {
+                      font-family: 'Zilla Slab', serif;
+                      font-style: italic;
+                      font-weight: $thin;
+                    }
+                  }
+  
+                  &:hover, &.active {
+                    h4 {
+                      color: $blue;
+                    }
+  
+                    .title {
+                      svg {
+                        fill: $blue;
+                      }
+                    }
+                  }
+  
+                  &.active {
+                    h4 {
+                      font-weight: $medium;
+                    }
+  
+                    .description-wrapper {
+                      height: 2rem;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+  
+        .slider-wrapper {
+          height: 100%;
+          left: 50%;
+          top: 0;
+          display: flex;
+          justify-content: flex-start;
+          align-items: flex-end;
+          position: initial;
+          margin-bottom: 1.5rem;
+          width: 100%;
+          padding: 0;
+          @media (min-width: 768px) {
+            width: 80%;
+            padding: 0 2rem;
+          }
+          @media (min-width: 1220px) {
+            position: absolute;
+            margin-bottom: 0;
+            width: 50%;
+          }
+  
+          .slider {
+            width: 100%;
+            height: 27.5rem;
+            position: relative;
+            @media (min-width: 1220px) {
+              width: 90%;
+              margin: auto;
+            }
+  
+            .image-wrapper {
+              position: absolute;
+              top: 0;
+              bottom: 0;
+              right: 0;
+              left: 0;
+  
+              img {
+                height: 100%;
+                width: 100%;
+                border-radius: 2rem;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+  
+        .bg-icon-wrapper {
+          position: absolute;
+          right: -7.5rem;
+          bottom: -15rem;
+          width: 20rem;
+          height: 20rem;
+          z-index: -1;
+  
+          .react-reveal {
+            position: relative;
+  
+            .bg-icon {
+              position: absolute;
+              fill: grey;
+              opacity: .2;
+            }
+          }
+        }
+      }
+    }
+  }
+  
