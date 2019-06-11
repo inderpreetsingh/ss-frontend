@@ -43,10 +43,10 @@ const HeroText = ({
         ))}
       </div>
       <div className={`buttons-wrapper ${themes[currentTheme].color}`}>
-        <button className="plain-btn">
+        <button className="plain-btn" type="button">
           <h5>{MAIN.BTN_STUDENT}</h5>
         </button>
-        <button className="color-btn" onClick={toggleRegistrationSidebar}>
+        <button className="color-btn" onClick={toggleRegistrationSidebar} type="button">
           <h5>{MAIN.BTN_SCHOOL}</h5>
         </button>
       </div>

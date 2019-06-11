@@ -54,7 +54,8 @@ const RegistrationSidebar = ({
         <Checkbox id="terms" />
         <div>
           {SIGN_UP_SIDEBAR.CHECKBOX.TERMS[0]}
-          <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>.
+          <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>
+.
         </div>
       </label>
       <label
@@ -66,8 +67,12 @@ const RegistrationSidebar = ({
       </label>
     </div>
     <div className="bottom">
-      <button className="main-btn">
-        <h5> {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON} </h5>
+      <button className="main-btn" type="button">
+        <h5>
+          {' '}
+          {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON}
+          {' '}
+        </h5>
       </button>
       <button
         className="transparent-btn"
@@ -75,6 +80,7 @@ const RegistrationSidebar = ({
           toggleRegistrationSidebar();
           toggleLoginSidebar();
         }}
+        type="button"
       >
         {SIGN_UP_SIDEBAR.SIGN_IN_BUTTON}
       </button>

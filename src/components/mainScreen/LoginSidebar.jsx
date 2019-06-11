@@ -37,7 +37,7 @@ const LoginSidebar = ({
       </label>
     </div>
     <div className="bottom">
-      <button className="main-btn">
+      <button className="main-btn" type="button">
         <h5>{SIGN_IN_SIDEBAR.SIGN_IN_BUTTON}</h5>
       </button>
       <button
@@ -46,6 +46,7 @@ const LoginSidebar = ({
           toggleLoginSidebar();
           toggleRegistrationSidebar();
         }}
+        type="button"
       >
         {SIGN_IN_SIDEBAR.SIGN_UP_BUTTON}
       </button>

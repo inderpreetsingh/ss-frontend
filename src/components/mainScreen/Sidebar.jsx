@@ -10,7 +10,7 @@ const Sidebar = ({
     <div ref={forwardRef} className={`sidebar ${active ? '' : 'hidden'}`}>
       <div className="top">
         <Logo />
-        <button className="go-back-arr" onClick={toggleShow}>
+        <button className="go-back-arr" onClick={toggleShow} type="button">
           &larr;
         </button>
       </div>

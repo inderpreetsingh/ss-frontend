@@ -2,7 +2,7 @@ import React from 'react';
 
 export default () => (
   <section className="footer">
-    <button className="join-for-free">
+    <button className="join-for-free" type="button">
       <h6>Join for free</h6>
     </button>
     <div className="content">
@@ -12,7 +12,9 @@ export default () => (
           rather than being swamped under administrative chores.
         </h3>
         <h4>
-          – Dr. Mark Marlow <br />
+          – Dr. Mark Marlow
+          {' '}
+          <br />
           Founder MMA Gym
         </h4>
       </div>

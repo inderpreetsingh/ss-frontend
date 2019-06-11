@@ -18,6 +18,7 @@ const LearnMoreBtn = ({ theme, enableAnimations, mainScreen }) => {
       <button
         className={theme.color}
         onClick={goToNextScreen}
+        type="button"
       >
         <h5>{MAIN.BTN_LEARN_MORE}</h5>
       </button>
