@@ -47,7 +47,7 @@ const HeroText = ({
         <button className="plain-btn" type="button">
           <h5>{MAIN.BTN_STUDENT}</h5>
         </button>
-        <button className="color-btn" onClick={toggleRegistrationSidebar} type="button">
+        <button className="color-btn" onClick={() => { toggleRegistrationSidebar(true); }} type="button">
           <h5>{MAIN.BTN_SCHOOL}</h5>
         </button>
       </div>

@@ -11,7 +11,7 @@ const Sidebar = ({
     <div ref={forwardRef} className={`sidebar ${active ? '' : 'hidden'}`}>
       <div className="top">
         <Logo />
-        <button className="go-back-arr" onClick={toggleShow} type="button">
+        <button className="go-back-arr" onClick={() => { toggleShow(false); }} type="button">
           &larr;
         </button>
       </div>

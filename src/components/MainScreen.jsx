@@ -59,15 +59,15 @@ class MainScreen extends React.Component {
     this.counter = setInterval(this.count, 10000);
   }
 
-  toggleSidebar(mode) {
+  toggleSidebar(mode, value) {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
 
     this.setState(
-      state => ({
-        [`show${mode}Sidebar`]: !state[`show${mode}Sidebar`],
+      () => ({
+        [`show${mode}Sidebar`]: value,
       }),
       () => {
         const { [`show${mode}Sidebar`]: show } = this.state;
@@ -87,8 +87,8 @@ class MainScreen extends React.Component {
     const { currentTheme, showRegistrationSidebar, showLoginSidebar } = this.state;
     const enableAnimations = !showRegistrationSidebar && !showLoginSidebar;
 
-    const toggleLoginSidebar = () => this.toggleSidebar(LOGIN);
-    const toggleRegistrationSidebar = () => this.toggleSidebar(REGISTRATION);
+    const toggleLoginSidebar = value => this.toggleSidebar(LOGIN, value);
+    const toggleRegistrationSidebar = value => this.toggleSidebar(REGISTRATION, value);
 
     return (
       <>

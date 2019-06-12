@@ -43,8 +43,8 @@ const LoginSidebar = ({
       <button
         className="transparent-btn"
         onClick={() => {
-          toggleLoginSidebar();
-          toggleRegistrationSidebar();
+          toggleLoginSidebar(false);
+          toggleRegistrationSidebar(true);
         }}
         type="button"
       >
