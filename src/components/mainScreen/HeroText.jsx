@@ -32,13 +32,13 @@ const HeroText = ({
         {themes.map(({ text, color }, index) => (
           <Fade key={color} when={currentTheme === index}>
             <div className="hero-text">
-              <h2>{MAIN.HERO_TEXT[0] + (location ? `in ${location}` : '') }</h2>
+              <h2>{MAIN.HERO_TEXT[0] + (location ? `in ${location}` : '')}</h2>
               <h1>
                 {MAIN.HERO_TEXT[1]}
                 <span className={color}>{text.make}</span>
                 {MAIN.HERO_TEXT[2]}
               </h1>
-              <h3>{MAIN.HERO_TEXT[3]}</h3>
+              <h3 className="primary-font">{MAIN.HERO_TEXT[3]}</h3>
             </div>
           </Fade>
         ))}

@@ -66,6 +66,11 @@ h2 {
 h3 {
   font-size: 1.75rem;
   line-height: 1.75rem;
+
+  &.primary-font {
+    font-family: 'Oswald', sans-serif;
+  }
+
 }
 
 h4 {
