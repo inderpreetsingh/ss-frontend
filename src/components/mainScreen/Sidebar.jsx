@@ -7,7 +7,7 @@ import '../../styles/sidebar.scss';
 const Sidebar = ({
   forwardRef, children, toggleShow, active,
 }) => (
-  <Fade when={active} opposite={!active}>
+  <Fade when={active}>
     <div ref={forwardRef} className={`sidebar ${active ? '' : 'hidden'}`}>
       <div className="top">
         <Logo />
