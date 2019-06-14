@@ -7,10 +7,13 @@ import { TEXT } from '../../locals';
 const { SIGN_IN_SIDEBAR } = TEXT.MAIN;
 
 
-const LoginSidebar = ({ forwardRef, toggleLoginSidebar, toggleRegistrationSidebar }) => (
+const LoginSidebar = ({
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar, active,
+}) => (
   <Sidebar
     forwardRef={forwardRef}
     toggleShow={toggleLoginSidebar}
+    active={active}
   >
     <h2 className="title">{SIGN_IN_SIDEBAR.TITLE}</h2>
     <div className="info">
@@ -34,15 +37,16 @@ const LoginSidebar = ({ forwardRef, toggleLoginSidebar, toggleRegistrationSideba
       </label>
     </div>
     <div className="bottom">
-      <button className="main-btn">
+      <button className="main-btn" type="button">
         <h5>{SIGN_IN_SIDEBAR.SIGN_IN_BUTTON}</h5>
       </button>
       <button
         className="transparent-btn"
         onClick={() => {
-          toggleLoginSidebar();
-          toggleRegistrationSidebar();
+          toggleLoginSidebar(false);
+          toggleRegistrationSidebar(true);
         }}
+        type="button"
       >
         {SIGN_IN_SIDEBAR.SIGN_UP_BUTTON}
       </button>
@@ -53,5 +57,7 @@ LoginSidebar.propTypes = {
   forwardRef: PropTypes.instanceOf(Object).isRequired,
   toggleLoginSidebar: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
+  active: PropTypes.bool.isRequired,
+
 };
 export default LoginSidebar;

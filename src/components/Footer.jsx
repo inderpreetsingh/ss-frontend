@@ -1,19 +1,23 @@
 import React from 'react';
 
+import '../styles/footer.scss';
+import { TEXT } from '../locals';
+
+const { FOOTER_TEXT } = TEXT;
+
 export default () => (
   <section className="footer">
-    <button className="join-for-free">
-      <h6>Join for free</h6>
+    <button className="join-for-free" type="button">
+      <h6>{FOOTER_TEXT[0]}</h6>
     </button>
     <div className="content">
       <div className="quote">
-        <h3>
-          Skillshape has given me the freedom to think about future of my school
-          rather than being swamped under administrative chores.
-        </h3>
+        <h3>{FOOTER_TEXT[1]}</h3>
         <h4>
-          – Dr. Mark Marlow <br />
-          Founder MMA Gym
+          {FOOTER_TEXT[2]}
+          {' '}
+          <br />
+          {FOOTER_TEXT[3]}
         </h4>
       </div>
     </div>

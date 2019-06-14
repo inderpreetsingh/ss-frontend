@@ -35,7 +35,10 @@ class InfoBlock extends React.Component {
       <div className="info-block">
         <div className="text-wrapper">
           <div className="text description">
-            <span>{index + 1}.</span>
+            <span>
+              {index + 1}
+.
+            </span>
             <Title />
           </div>
         </div>

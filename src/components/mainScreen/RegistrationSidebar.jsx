@@ -11,10 +11,11 @@ const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
 
 const RegistrationSidebar = ({
-  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar, active,
 }) => (
   <Sidebar
     forwardRef={forwardRef}
+    active={active}
     toggleShow={toggleRegistrationSidebar}
   >
     <h2 className="title">{SIGN_UP_SIDEBAR.TITLE}</h2>
@@ -53,7 +54,8 @@ const RegistrationSidebar = ({
         <Checkbox id="terms" />
         <div>
           {SIGN_UP_SIDEBAR.CHECKBOX.TERMS[0]}
-          <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>.
+          <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>
+.
         </div>
       </label>
       <label
@@ -65,15 +67,20 @@ const RegistrationSidebar = ({
       </label>
     </div>
     <div className="bottom">
-      <button className="main-btn">
-        <h5> {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON} </h5>
+      <button className="main-btn" type="button">
+        <h5>
+          {' '}
+          {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON}
+          {' '}
+        </h5>
       </button>
       <button
         className="transparent-btn"
         onClick={() => {
-          toggleRegistrationSidebar();
-          toggleLoginSidebar();
+          toggleRegistrationSidebar(false);
+          toggleLoginSidebar(true);
         }}
+        type="button"
       >
         {SIGN_UP_SIDEBAR.SIGN_IN_BUTTON}
       </button>
@@ -84,6 +91,7 @@ RegistrationSidebar.propTypes = {
   toggleLoginSidebar: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
   forwardRef: PropTypes.instanceOf(Object).isRequired,
+  active: PropTypes.bool.isRequired,
 
 };
 export default RegistrationSidebar;

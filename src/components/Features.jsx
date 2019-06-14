@@ -5,6 +5,7 @@ import CONST from '../const';
 
 import ProgressBar from './features/ProgressBar';
 import InfoBlock from './features/InfoBlock';
+import '../styles/features.scss';
 
 const { screenHeight, screenWidth } = CONST;
 

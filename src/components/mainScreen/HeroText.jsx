@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 
 import themes from './themes';
 import { TEXT } from '../../locals';
+import '../../styles/herotext.scss';
 
 const { MAIN } = TEXT;
 
@@ -31,22 +32,22 @@ const HeroText = ({
         {themes.map(({ text, color }, index) => (
           <Fade key={color} when={currentTheme === index}>
             <div className="hero-text">
-              <h2>{MAIN.HERO_TEXT[0] + (location ? `in ${location}` : '') }</h2>
+              <h2>{MAIN.HERO_TEXT[0] + (location ? `in ${location}` : '')}</h2>
               <h1>
                 {MAIN.HERO_TEXT[1]}
                 <span className={color}>{text.make}</span>
                 {MAIN.HERO_TEXT[2]}
               </h1>
-              <h2 className="smallerH2">{MAIN.HERO_TEXT[3]}</h2>
+              <h3 className="primary-font">{MAIN.HERO_TEXT[3]}</h3>
             </div>
           </Fade>
         ))}
       </div>
       <div className={`buttons-wrapper ${themes[currentTheme].color}`}>
-        <button className="plain-btn">
+        <button className="plain-btn" type="button">
           <h5>{MAIN.BTN_STUDENT}</h5>
         </button>
-        <button className="color-btn" onClick={toggleRegistrationSidebar}>
+        <button className="color-btn" onClick={() => { toggleRegistrationSidebar(true); }} type="button">
           <h5>{MAIN.BTN_SCHOOL}</h5>
         </button>
       </div>
@@ -60,10 +61,13 @@ const HeroText = ({
 );
 HeroText.propTypes = {
   currentTheme: PropTypes.number.isRequired,
-  location: PropTypes.string.isRequired,
+  location: PropTypes.string,
   changeTheme: PropTypes.func.isRequired,
   toggleRegistrationSidebar: PropTypes.func.isRequired,
   showHeroText: PropTypes.bool.isRequired,
 };
 
+HeroText.defaultProps = {
+  location: '',
+};
 export default HeroText;
