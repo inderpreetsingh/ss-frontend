@@ -64,55 +64,56 @@ class MainScreen extends React.Component {
       behavior: 'smooth',
     });
 
-    this.setState(state => ({
-      [`show${mode}Sidebar`]: !state[`show${mode}Sidebar`],
-    }), () => {
-      const { [`show${mode}Sidebar`]: show } = this.state;
+    this.setState(
+      state => ({
+        [`show${mode}Sidebar`]: !state[`show${mode}Sidebar`],
+      }),
+      () => {
+        const { [`show${mode}Sidebar`]: show } = this.state;
 
-      if (show) {
-        disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
-        clearInterval(this.counter);
-      } else {
-        enableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
-        this.counter = setInterval(this.count, 10000);
-      }
-    });
+        if (show) {
+          disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
+          clearInterval(this.counter);
+        } else {
+          enableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
+          this.counter = setInterval(this.count, 10000);
+        }
+      },
+    );
   }
 
   render() {
     const { currentTheme, showRegistrationSidebar, showLoginSidebar } = this.state;
     const enableAnimations = !showRegistrationSidebar && !showLoginSidebar;
-    const showHeroText = enableAnimations;
 
     const toggleLoginSidebar = () => this.toggleSidebar(LOGIN);
     const toggleRegistrationSidebar = () => this.toggleSidebar(REGISTRATION);
 
     return (
       <>
-        <LoginSidebar
-          forwardRef={this.sidebarLogin}
-          active={showLoginSidebar}
-          toggleLoginSidebar={toggleLoginSidebar}
-          toggleRegistrationSidebar={toggleRegistrationSidebar}
-        />
-        <RegistrationSidebar
-          forwardRef={this.sidebarRegistration}
-          active={showRegistrationSidebar}
-          toggleLoginSidebar={toggleLoginSidebar}
-          toggleRegistrationSidebar={toggleRegistrationSidebar}
-        />
+        {showLoginSidebar && (
+          <LoginSidebar
+            forwardRef={this.sidebarLogin}
+            toggleLoginSidebar={toggleLoginSidebar}
+            toggleRegistrationSidebar={toggleRegistrationSidebar}
+          />
+        )}
+        {showRegistrationSidebar && (
+          <RegistrationSidebar
+            forwardRef={this.sidebarRegistration}
+            toggleLoginSidebar={toggleLoginSidebar}
+            toggleRegistrationSidebar={toggleRegistrationSidebar}
+          />
+        )}
 
         <section className="main-screen" ref={this.mainScreen}>
           <Menu active={enableAnimations} />
-          <Background
-            currentTheme={currentTheme}
-            enableAnimations={enableAnimations}
-          />
+          <Background currentTheme={currentTheme} enableAnimations={enableAnimations} />
           <HeroText
             currentTheme={currentTheme}
             changeTheme={this.changeTheme}
             toggleLoginSidebar={toggleLoginSidebar}
-            showHeroText={showHeroText}
+            showHeroText={enableAnimations}
             toggleRegistrationSidebar={toggleRegistrationSidebar}
           />
           <LearnMoreBtn

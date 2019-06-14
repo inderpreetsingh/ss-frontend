@@ -80,6 +80,11 @@ h1 {
 h2 {
   font-size: 2.25rem;
   line-height: 2.25rem;
+
+  &.smallerH2 {
+    font-size: 1.75rem;
+    line-height: 1.75rem;
+  }
 }
 
 h3 {
@@ -335,12 +340,10 @@ input[type=checkbox] {
     color: #fff;
     padding: 2.5rem;
     visibility: visible;
-    opacity: 1;
-    transition: visibility 0.3s, opacity 0.3s ease-in;
-
+    width: 100%;
+    
     &.hidden {
       visibility: hidden;
-      opacity: 0;
     }
 
     .lines {
@@ -656,11 +659,11 @@ input[type=checkbox] {
         width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
         max-width: 100%;
         @media (min-width: 768px) {
-          width: 85vw;
+          width: 75vw;
           padding: 1.25rem 0;
         }
         @media (min-width: 1024px) {
-          width: 75vw;
+          width: 65vw;
         }
 
         .line {
@@ -691,11 +694,11 @@ input[type=checkbox] {
             width: calc(100vw - 17px); // Reserve space fo vertical scrollbar.
             padding: 0 1.25rem;
             @media (min-width: 768px) {
-              width: 85vw;
+              width: 75vw;
               padding: 0;
             }
             @media (min-width: 1024px) {
-              width: 75vw;
+              width: 65vw;
             }
 
             .line {
@@ -1022,34 +1025,6 @@ input[type=checkbox] {
     }
   }
 }
-.inputPassword{
-  width: 100%;
-  border: 2px solid rgba(225, 225, 225, .75);
-  background: transparent;
-  color: #fff;
-  font-family: 'Oswald', sans-serif;
-  height: 3.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  letter-spacing: 3px;
-  &:hover, &:focus, &:active {
-    border-color: rgba(225, 225, 225, 1);
-  }
-}
-.inputEmail{
-  width: 100%;
-  border: 2px solid rgba(225, 225, 225, .75);
-  background: transparent;
-  color: #fff;
-  font-family: 'Zilla Slab', serif !important;
-  height: 3.5rem;
-  padding: 1rem;
-  margin-bottom: 1rem;
-  &:hover, &:focus, &:active {
-    border-color: rgba(225, 225, 225, 1);
-  }
-}
-
 .sidebar {
   position: absolute;
   z-index: 2;
@@ -1063,22 +1038,9 @@ input[type=checkbox] {
   width: 100vw;
   display: flex;
   flex-direction: column;
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0.3s, opacity 0.3s ease-in;
-
-  &.hidden {
-    visibility: hidden;
-    opacity: 0;
-  }
 
   @media (min-width: 768px) {
     width: 35vw;
-
-    &.hidden {
-      visibility: hidden;
-      opacity: 0;
-    }
   }
 
   .top {
@@ -1153,6 +1115,14 @@ input[type=checkbox] {
             height: 3.5rem;
             padding: 1rem;
             margin-bottom: 1rem;
+
+            &.email {
+                 font-family: 'Zilla Slab', serif ;
+             }
+
+            &.password {
+                 letter-spacing: 3px;
+            } 
 
             &:hover, &:focus, &:active {
               border-color: rgba(225, 225, 225, 1);

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import PropTypes from 'prop-types';
 import CONST from '../../const';
 
 const { screenHeight, screenWidth } = CONST;
@@ -94,5 +94,8 @@ class Parallax extends React.Component {
     );
   }
 }
-
+Parallax.propTypes = {
+  children: PropTypes.node.isRequired,
+  active: PropTypes.bool.isRequired,
+};
 export default Parallax;

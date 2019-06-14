@@ -1,5 +1,6 @@
 import React from 'react';
 import Fade from 'react-reveal/Fade';
+import PropTypes from 'prop-types';
 
 import yoga from '../../images/bg/yoga.jpg';
 import dance from '../../images/bg/dance.jpg';
@@ -64,5 +65,14 @@ class Background extends React.Component {
     );
   }
 }
+Background.propTypes = {
+  currentTheme: PropTypes.number,
+  enableAnimations: PropTypes.bool,
+};
 
+Background.defaultProps = {
+  currentTheme: 0,
+  enableAnimations: true,
+
+};
 export default Background;

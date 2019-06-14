@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-for, jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { Link } from 'gatsby';
+import PropTypes from 'prop-types';
 
 import Sidebar from './Sidebar';
 import Checkbox from '../Checkbox';
@@ -8,12 +9,12 @@ import { TEXT } from '../../locals';
 
 const { SIGN_UP_SIDEBAR } = TEXT.MAIN;
 
-export default ({
-  forwardRef, active, toggleLoginSidebar, toggleRegistrationSidebar,
+
+const RegistrationSidebar = ({
+  forwardRef, toggleLoginSidebar, toggleRegistrationSidebar,
 }) => (
   <Sidebar
     forwardRef={forwardRef}
-    active={active}
     toggleShow={toggleRegistrationSidebar}
   >
     <h2 className="title">{SIGN_UP_SIDEBAR.TITLE}</h2>
@@ -23,7 +24,7 @@ export default ({
         <input
           id="registration_email"
           type="email"
-          className="inputEmail"
+          className="email"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.EMAIL}
         />
       </label>
@@ -32,7 +33,7 @@ export default ({
         <input
           id="registration_password"
           type="password"
-          className="inputPassword"
+          className="password"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.PASSWORD}
         />
       </label>
@@ -41,7 +42,7 @@ export default ({
         <input
           id="confirm_password"
           type="password"
-          className="inputPassword"
+          className="password"
           placeholder={SIGN_UP_SIDEBAR.PLACEHOLDER.CONFIRM_PASSWORD}
         />
       </label>
@@ -79,3 +80,10 @@ export default ({
     </div>
   </Sidebar>
 );
+RegistrationSidebar.propTypes = {
+  toggleLoginSidebar: PropTypes.func.isRequired,
+  toggleRegistrationSidebar: PropTypes.func.isRequired,
+  forwardRef: PropTypes.instanceOf(Object).isRequired,
+
+};
+export default RegistrationSidebar;

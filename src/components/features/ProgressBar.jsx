@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 class ProgressBar extends React.Component {
   constructor(props) {
@@ -63,5 +64,12 @@ class ProgressBar extends React.Component {
     );
   }
 }
+ProgressBar.propTypes = {
+  featuresSectionRef: PropTypes.instanceOf(Object),
+};
 
+ProgressBar.defaultProps = {
+  featuresSectionRef: {},
+
+};
 export default ProgressBar;
