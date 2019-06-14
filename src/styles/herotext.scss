@@ -1,192 +1,192 @@
 @import "./consts.scss";
 
 .main-text {
-    position: absolute;
-    transform: translateY(-50%);
-    top: 50%;
-    color: #fff;
-    padding: 2.5rem;
-    visibility: visible;
-    width: 100%;
-    
-    &.hidden {
-      visibility: hidden;
-    }
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  color: #fff;
+  padding: 2.5rem;
+  visibility: visible;
+  width: 100%;
 
-    .lines {
-      display: flex;
-      width: 15rem;
-      margin-bottom: 2rem;
+  &.hidden {
+    visibility: hidden;
+  }
 
-      span {
-        cursor: pointer;
-        display: block;
-        height: 0.5rem;
-        border-radius: 0.25rem;
-        margin-right: 0.5rem;
-        transition: flex-grow 10s;
-        flex-grow: 1;
+  .lines {
+    display: flex;
+    width: 15rem;
+    margin-bottom: 2rem;
 
-        &.red {
-          background: $darken-red;
-        }
-
-        &.green {
-          background: $darken-green;
-        }
-
-        &.yellow {
-          background: $darken-yellow;
-        }
-
-        &.active {
-          flex-grow: 3;
-
-          &.red {
-            background: $red;
-          }
-
-          &.green {
-            background: $green;
-          }
-
-          &.yellow {
-            background: $yellow;
-          }
-        }
-
-        &:nth-last-child(1) {
-          margin-right: 0;
-        }
-      }
-    }
-
-
-    .changing-text-wrapper {
-      position: relative;
-      margin-bottom: 2rem;
-      height: 9.75rem;
-
-      .hero-text {
-        position: absolute;
-
-        h2 {
-          font-weight: $thin;
-          margin-bottom: 1.25rem;
-          white-space: nowrap;
-
-          span {
-            font-weight: $bold;
-          }
-        }
-
-        h1 {
-          text-transform: uppercase;
-          margin-bottom: 1.25rem;
-
-          span {
-            &.red {
-              color: $red;
-            }
-
-            &.green {
-              color: $green;
-            }
-
-            &.yellow {
-              color: $yellow;
-            }
-          }
-        }
-      }
-    }
-
-    .buttons-wrapper {
-      margin-bottom: 1.25rem;
-
-      button {
-        color: #fff;
-        margin-right: 1.25rem;
-        text-transform: uppercase;
-        font-weight: bold;
-        padding: 0 2rem;
-        height: 3.5rem;
-        transition: 0.3s;
-
-        h5 {
-          font-family: 'Oswald', sans-serif;
-        }
-
-        &:nth-last-child(1) {
-          margin-right: 0;
-        }
-      }
-
-      .plain-btn {
-        background: transparent;
-        border: 0.2rem solid #fff;
-
-        &:hover {
-          color: #000;
-          background: #fff;
-        }
-      }
-
-      .color-btn {
-        position: relative;
-
-        &:after {
-          content: "";
-          display: block;
-          position: absolute;
-          top: 0;
-          bottom: 0;
-          right: 0;
-          left: 0;
-          border: 0.2rem solid transparent;
-          transition: border 0.3s;
-        }
-      }
+    span {
+      cursor: pointer;
+      display: block;
+      height: 0.5rem;
+      border-radius: 0.25rem;
+      margin-right: 0.5rem;
+      transition: flex-grow 10s;
+      flex-grow: 1;
 
       &.red {
-        .color-btn {
-          background: $red;
-
-          &:hover {
-            background: $darken-red;
-          }
-        }
+        background: $darken-red;
       }
 
       &.green {
-        .color-btn {
-          background: $green;
-
-          &:hover {
-            background: $darken-green;
-          }
-        }
+        background: $darken-green;
       }
 
       &.yellow {
-        .color-btn {
-          background: $yellow;
+        background: $darken-yellow;
+      }
 
-          &:hover {
-            background: $darken-yellow;
-          }
+      &.active {
+        flex-grow: 3;
+
+        &.red {
+          background: $red;
+        }
+
+        &.green {
+          background: $green;
+        }
+
+        &.yellow {
+          background: $yellow;
         }
       }
 
-    }
-
-
-    h5.hurry-up {
-      font-weight: $medium;
-      font-style: italic;
-
-      span {
-        font-weight: $bold;
+      &:nth-last-child(1) {
+        margin-right: 0;
       }
     }
   }
+
+
+  .changing-text-wrapper {
+    position: relative;
+    margin-bottom: 2rem;
+    height: 9.75rem;
+
+    .hero-text {
+      position: absolute;
+
+      h2 {
+        font-weight: $thin;
+        margin-bottom: 1.25rem;
+        white-space: nowrap;
+
+        span {
+          font-weight: $bold;
+        }
+      }
+
+      h1 {
+        text-transform: uppercase;
+        margin-bottom: 1.25rem;
+
+        span {
+          &.red {
+            color: $red;
+          }
+
+          &.green {
+            color: $green;
+          }
+
+          &.yellow {
+            color: $yellow;
+          }
+        }
+      }
+    }
+  }
+
+  .buttons-wrapper {
+    margin-bottom: 1.25rem;
+
+    button {
+      color: #fff;
+      margin-right: 1.25rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      padding: 0 2rem;
+      height: 3.5rem;
+      transition: 0.3s;
+
+      h5 {
+        font-family: 'Oswald', sans-serif;
+      }
+
+      &:nth-last-child(1) {
+        margin-right: 0;
+      }
+    }
+
+    .plain-btn {
+      background: transparent;
+      border: 0.2rem solid #fff;
+
+      &:hover {
+        color: #000;
+        background: #fff;
+      }
+    }
+
+    .color-btn {
+      position: relative;
+
+      &:after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        border: 0.2rem solid transparent;
+        transition: border 0.3s;
+      }
+    }
+
+    &.red {
+      .color-btn {
+        background: $red;
+
+        &:hover {
+          background: $darken-red;
+        }
+      }
+    }
+
+    &.green {
+      .color-btn {
+        background: $green;
+
+        &:hover {
+          background: $darken-green;
+        }
+      }
+    }
+
+    &.yellow {
+      .color-btn {
+        background: $yellow;
+
+        &:hover {
+          background: $darken-yellow;
+        }
+      }
+    }
+
+  }
+
+
+  h5.hurry-up {
+    font-weight: $medium;
+    font-style: italic;
+
+    span {
+      font-weight: $bold;
+    }
+  }
+}

@@ -1,3 +1,5 @@
+
+
 import React from 'react';
 import PropTypes from 'prop-types';
 
@@ -64,6 +66,7 @@ class ProgressBar extends React.Component {
     );
   }
 }
+
 ProgressBar.propTypes = {
   featuresSectionRef: PropTypes.instanceOf(Object),
 };

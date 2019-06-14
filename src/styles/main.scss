@@ -1,8 +1,5 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald:300,500,700|Zilla+Slab:300,300i,500,700');
 @import "./consts.scss";
-// TODO: Split this file.
-
-
 
 // Common
 * {
@@ -69,6 +66,7 @@ h3 {
 
   &.primary-font {
     font-family: 'Oswald', sans-serif;
+    font-weight: $thin;
   }
 
 }
@@ -122,6 +120,7 @@ h6, p {
 
 input {
   outline: none;
+
   &:active, &:focus, &:hover {
     outline: none;
   }

@@ -15,7 +15,6 @@ export default () => (
         <h3>{FOOTER_TEXT[1]}</h3>
         <h4>
           {FOOTER_TEXT[2]}
-          {' '}
           <br />
           {FOOTER_TEXT[3]}
         </h4>

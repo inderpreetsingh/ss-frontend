@@ -37,7 +37,7 @@ class InfoBlock extends React.Component {
           <div className="text description">
             <span>
               {index + 1}
-.
+              .
             </span>
             <Title />
           </div>
@@ -91,6 +91,7 @@ class InfoBlock extends React.Component {
     );
   }
 }
+
 InfoBlock.propTypes = {
   data: PropTypes.instanceOf(Object),
   index: PropTypes.number,
