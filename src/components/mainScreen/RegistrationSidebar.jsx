@@ -55,7 +55,7 @@ const RegistrationSidebar = ({
         <div>
           {SIGN_UP_SIDEBAR.CHECKBOX.TERMS[0]}
           <Link to="/terms">{SIGN_UP_SIDEBAR.CHECKBOX.TERMS[1]}</Link>
-.
+          .
         </div>
       </label>
       <label
@@ -63,15 +63,15 @@ const RegistrationSidebar = ({
         className="label-with-checkbox"
       >
         <Checkbox id="news" />
-        {SIGN_UP_SIDEBAR.CHECKBOX.NEWS}
+        <div>
+          {SIGN_UP_SIDEBAR.CHECKBOX.NEWS}
+        </div>
       </label>
     </div>
     <div className="bottom">
       <button className="main-btn" type="button">
         <h5>
-          {' '}
           {SIGN_UP_SIDEBAR.SIGN_UP_BUTTON}
-          {' '}
         </h5>
       </button>
       <button

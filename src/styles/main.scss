@@ -151,6 +151,7 @@ input[type=checkbox] {
     border-style: solid;
     border-color: #fff;
     padding: 0.2rem;
+    cursor: pointer;
 
     &:after {
       content: "";
