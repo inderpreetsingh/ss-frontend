@@ -1,16 +1,14 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
-import CONST from '../../const';
 import { TEXT } from '../../locals';
 
-const { screenHeight } = CONST;
 const { MAIN } = TEXT;
 
-
-export default ({ theme, enableAnimations }) => {
+const LearnMoreBtn = ({ theme, enableAnimations, mainScreen }) => {
   const goToNextScreen = () => {
     window.scrollTo({
-      top: screenHeight + 1, // To make menu sticky.
+      top: mainScreen.current.clientHeight + 1, // +1 To make menu sticky.
       behavior: 'smooth',
     });
   };
@@ -20,6 +18,7 @@ export default ({ theme, enableAnimations }) => {
       <button
         className={theme.color}
         onClick={goToNextScreen}
+        type="button"
       >
         <h5>{MAIN.BTN_LEARN_MORE}</h5>
       </button>
@@ -31,3 +30,11 @@ export default ({ theme, enableAnimations }) => {
     </div>
   );
 };
+
+LearnMoreBtn.propTypes = {
+  theme: PropTypes.instanceOf(Object).isRequired,
+  enableAnimations: PropTypes.bool.isRequired,
+  mainScreen: PropTypes.instanceOf(Object).isRequired,
+};
+
+export default LearnMoreBtn;

@@ -1,11 +1,14 @@
 module.exports = {
   LOGO: ['Skillshape,', 'your path revealed'],
   MAIN: {
+    SEO_TITLE: 'Skillshape Landing Page',
     // First screen
     MENU: 'menu',
     BACKGROUND_ALT: 'Background',
     HERO_TEXT: [
-      'We help martial arts schools and gyms ', /* Location */ 'build a ', /* Stronger */ ' world.',
+      'We help martial arts schools and gyms ',
+      /* Location */ 'build a ',
+      /* Stronger */ ' world.',
       'We give you the free tools. You just have to teach.',
     ],
     THEME: {
@@ -21,7 +24,7 @@ module.exports = {
     },
     BTN_STUDENT: 'I am a student',
     BTN_SCHOOL: 'Sign up as a school',
-    HURRY_UP: ['Hurry up!', ' It\'s free ', 'for a limited time.'],
+    HURRY_UP: ['Hurry up!', " It's free ", 'for a limited time.'],
     BTN_LEARN_MORE: 'Learn More',
 
     // Sidebars
@@ -54,7 +57,7 @@ module.exports = {
         PASSWORD: '******',
       },
       SIGN_IN_BUTTON: 'Log in',
-      SIGN_UP_BUTTON: 'I don\'t have an account, register.',
+      SIGN_UP_BUTTON: "I don't have an account, register.",
     },
 
     // Second screen
@@ -65,6 +68,12 @@ module.exports = {
   NOT_FOUND: {
     TITLE: 'NOT FOUND',
     SEO_TITLE: '404: Not found',
-    BODY: 'You just hit a route that doesn\'t exist... the sadness.',
+    BODY: "You just hit a route that doesn't exist... the sadness.",
   },
+  FOOTER_TEXT: [
+    'Join for free',
+    'Skillshape has given me the freedom to think about future of my school rather than being swamped under administrative chores.',
+    ' – Dr. Mark Marlow',
+    'Founder MMA Gym',
+  ],
 };

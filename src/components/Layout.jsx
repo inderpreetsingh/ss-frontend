@@ -1,8 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { StaticQuery, graphql } from 'gatsby';
+import smoothscroll from 'smoothscroll-polyfill';
 
 import Header from './Header';
+
+// Make smooth scroll for Edge and Safari.
+smoothscroll.polyfill();
 
 const Layout = ({ children }) => (
   <StaticQuery

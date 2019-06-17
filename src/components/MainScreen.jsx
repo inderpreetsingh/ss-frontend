@@ -10,6 +10,7 @@ import Background from './mainScreen/Background';
 import LearnMoreBtn from './mainScreen/LearnMoreBtn';
 import LoginSidebar from './mainScreen/LoginSidebar';
 import RegistrationSidebar from './mainScreen/RegistrationSidebar';
+import '../styles/mainscreen.scss';
 
 const { LOGIN, REGISTRATION } = CONST.SIDEBAR_MODE;
 
@@ -25,6 +26,7 @@ class MainScreen extends React.Component {
 
     this.counter = null;
 
+    this.mainScreen = React.createRef();
     this.sidebarLogin = React.createRef();
     this.sidebarRegistration = React.createRef();
 
@@ -57,63 +59,64 @@ class MainScreen extends React.Component {
     this.counter = setInterval(this.count, 10000);
   }
 
-  toggleSidebar(mode) {
+  toggleSidebar(mode, value) {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
 
-    this.setState(state => ({
-      [`show${mode}Sidebar`]: !state[`show${mode}Sidebar`],
-    }), () => {
-      const { [`show${mode}Sidebar`]: show } = this.state;
+    this.setState(
+      () => ({
+        [`show${mode}Sidebar`]: value,
+      }),
+      () => {
+        const { [`show${mode}Sidebar`]: show } = this.state;
 
-      console.log(`sidebar${mode}}`, this[`sidebar${mode}`]);
-      if (show) {
-        disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
-        clearInterval(this.counter);
-      } else {
-        enableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
-        this.counter = setInterval(this.count, 10000);
-      }
-    });
+        if (show) {
+          disableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
+          clearInterval(this.counter);
+        } else {
+          enableBodyScroll(this[`sidebar${mode}`].current, { reserveScrollBarGap: true });
+          this.counter = setInterval(this.count, 10000);
+        }
+      },
+    );
   }
 
   render() {
     const { currentTheme, showRegistrationSidebar, showLoginSidebar } = this.state;
     const enableAnimations = !showRegistrationSidebar && !showLoginSidebar;
 
-    const toggleLoginSidebar = () => this.toggleSidebar(LOGIN);
-    const toggleRegistrationSidebar = () => this.toggleSidebar(REGISTRATION);
+    const toggleLoginSidebar = value => this.toggleSidebar(LOGIN, value);
+    const toggleRegistrationSidebar = value => this.toggleSidebar(REGISTRATION, value);
 
     return (
       <>
         <LoginSidebar
-          forwardRef={this.sidebarLogin}
           active={showLoginSidebar}
+          forwardRef={this.sidebarLogin}
           toggleLoginSidebar={toggleLoginSidebar}
           toggleRegistrationSidebar={toggleRegistrationSidebar}
         />
         <RegistrationSidebar
-          forwardRef={this.sidebarRegistration}
           active={showRegistrationSidebar}
+          forwardRef={this.sidebarRegistration}
           toggleLoginSidebar={toggleLoginSidebar}
           toggleRegistrationSidebar={toggleRegistrationSidebar}
         />
 
-        <section className="main-screen">
+        <section className="main-screen" ref={this.mainScreen}>
           <Menu active={enableAnimations} />
-          <Background
-            currentTheme={currentTheme}
-            enableAnimations={enableAnimations}
-          />
+          <Background currentTheme={currentTheme} enableAnimations={enableAnimations} />
           <HeroText
             currentTheme={currentTheme}
             changeTheme={this.changeTheme}
             toggleLoginSidebar={toggleLoginSidebar}
+            showHeroText={enableAnimations}
             toggleRegistrationSidebar={toggleRegistrationSidebar}
           />
           <LearnMoreBtn
+            mainScreen={this.mainScreen}
             theme={themes[currentTheme]}
             enableAnimations={enableAnimations}
           />
